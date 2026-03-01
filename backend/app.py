@@ -7,8 +7,8 @@ app.config.from_object(Config)
 
 CORS(app, resources={
     r"/api/*": {
-        "origins": ["http://localhost:5173", "http://localhost:3000", "http://127.0.0.1:5173"],
-        "methods": ["GET", "POST", "PUT", "DELETE", "PATCH"],
+        "origins": "*",  # Allow all origins for development
+        "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"]
     }
 })
@@ -21,6 +21,7 @@ from routes.resumes import resumes_bp
 from routes.assistant import assistant_bp
 from routes.applications import applications_bp
 from routes.interview import interview_bp
+from routes.habits import habits_bp
 
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
 app.register_blueprint(tasks_bp, url_prefix='/api/tasks')
@@ -29,6 +30,7 @@ app.register_blueprint(resumes_bp, url_prefix='/api/resumes')
 app.register_blueprint(assistant_bp, url_prefix='/api/assistant')
 app.register_blueprint(applications_bp, url_prefix='/api/applications')
 app.register_blueprint(interview_bp, url_prefix='/api/interview')
+app.register_blueprint(habits_bp, url_prefix='/api/habits')
 
 @app.route('/api/health', methods=['GET'])
 def health_check():

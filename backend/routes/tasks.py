@@ -44,13 +44,32 @@ def create_task(current_user_id):
             except:
                 return jsonify({'message': 'Invalid due_date format'}), 400
         
+        # Parse appointment times if provided
+        start_time = None
+        end_time = None
+        if data.get('start_time'):
+            try:
+                start_time = datetime.fromisoformat(data['start_time'].replace('Z', '+00:00'))
+            except:
+                return jsonify({'message': 'Invalid start_time format'}), 400
+        
+        if data.get('end_time'):
+            try:
+                end_time = datetime.fromisoformat(data['end_time'].replace('Z', '+00:00'))
+            except:
+                return jsonify({'message': 'Invalid end_time format'}), 400
+        
         task_doc = Task.create(
             user_id=current_user_id,
             title=data['title'],
             description=data.get('description', ''),
             priority=data.get('priority', 'medium'),
             due_date=due_date,
-            status=data.get('status', 'pending')
+            status=data.get('status', 'pending'),
+            is_appointment=data.get('is_appointment', False),
+            start_time=start_time,
+            end_time=end_time,
+            location=data.get('location', '')
         )
         
         result = tasks_collection.insert_one(task_doc)
@@ -78,13 +97,25 @@ def update_task(current_user_id, task_id):
             return jsonify({'message': 'Task not found'}), 404
         
         updates = {}
-        for field in ['title', 'description', 'priority', 'status']:
+        for field in ['title', 'description', 'priority', 'status', 'is_appointment', 'location']:
             if field in data:
                 updates[field] = data[field]
         
         if 'due_date' in data:
             try:
                 updates['due_date'] = datetime.fromisoformat(data['due_date'].replace('Z', '+00:00'))
+            except:
+                pass
+        
+        if 'start_time' in data:
+            try:
+                updates['start_time'] = datetime.fromisoformat(data['start_time'].replace('Z', '+00:00'))
+            except:
+                pass
+        
+        if 'end_time' in data:
+            try:
+                updates['end_time'] = datetime.fromisoformat(data['end_time'].replace('Z', '+00:00'))
             except:
                 pass
         
@@ -143,3 +174,55 @@ def update_task_status(current_user_id, task_id):
         return jsonify({'message': 'Task status updated', 'task': serialize_doc(updated_task)}), 200
     except Exception as e:
         return jsonify({'message': 'Failed to update task status', 'error': str(e)}), 500
+
+@tasks_bp.route('/calendar', methods=['GET'])
+@token_required
+def get_calendar_tasks(current_user_id):
+    """Get tasks grouped by date for calendar view"""
+    try:
+        from calendar import monthrange
+        from datetime import date
+        
+        # Get month and year from query params (default: current month)
+        month = int(request.args.get('month', date.today().month))
+        year = int(request.args.get('year', date.today().year))
+        
+        # Calculate date range for the month
+        days_in_month = monthrange(year, month)[1]
+        start_date = datetime(year, month, 1)
+        end_date = datetime(year, month, days_in_month, 23, 59, 59)
+        
+        # Get all tasks/appointments for this month
+        query = {
+            'user_id': ObjectId(current_user_id),
+            '$or': [
+                {'due_date': {'$gte': start_date, '$lte': end_date}},
+                {'start_time': {'$gte': start_date, '$lte': end_date}}
+            ]
+        }
+        
+        tasks = list(tasks_collection.find(query).sort('start_time', 1))
+        tasks_data = serialize_doc(tasks)
+        
+        # Group tasks by date
+        calendar_data = {}
+        for task in tasks_data:
+            # Use start_time for appointments, due_date for regular tasks
+            task_date = None
+            if task.get('start_time'):
+                task_date = task['start_time'][:10]  # YYYY-MM-DD
+            elif task.get('due_date'):
+                task_date = task['due_date'][:10]
+            
+            if task_date:
+                if task_date not in calendar_data:
+                    calendar_data[task_date] = []
+                calendar_data[task_date].append(task)
+        
+        return jsonify({
+            'calendar': calendar_data,
+            'month': month,
+            'year': year
+        }), 200
+    except Exception as e:
+        return jsonify({'message': 'Failed to get calendar tasks', 'error': str(e)}), 500

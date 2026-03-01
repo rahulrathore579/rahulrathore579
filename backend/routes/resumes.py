@@ -11,6 +11,11 @@ from models.resume import Resume
 from middleware.auth_middleware import token_required
 from services.gemini_service import gemini_service
 
+# ATS service disabled due to Python 3.14 compatibility
+# To enable: downgrade to Python 3.11 or 3.12
+ATS_AVAILABLE = False
+ats_service = None
+
 resumes_bp = Blueprint('resumes', __name__)
 
 # GridFS for file storage
@@ -66,9 +71,16 @@ def upload_resume(current_user_id):
             user_id=str(current_user_id)
         )
         
-        # Score resume with AI
+        # Score resume with AI (legacy scoring)
         ai_score = None
+        ats_analysis = None
+        
         try:
+            # Comprehensive ATS Analysis (only if available)
+            if ATS_AVAILABLE and ats_service:
+                ats_analysis = ats_service.analyze_resume_comprehensive(extracted_text, job_role)
+            
+            # Legacy scoring for backward compatibility
             score_data = gemini_service.score_resume(extracted_text, job_role)
             if score_data:
                 ai_score = {
@@ -96,6 +108,7 @@ def upload_resume(current_user_id):
             'file_type': filename.split('.')[-1].lower(),
             'extracted_text': extracted_text[:5000],  # Store first 5000 chars
             'ai_score': ai_score,
+            'ats_analysis': ats_analysis,  # Comprehensive ATS analysis
             'created_at': datetime.utcnow(),
             'updated_at': datetime.utcnow()
         }
@@ -286,3 +299,227 @@ def improve_resume(current_user_id, resume_id):
         return jsonify({'message': 'Suggestions generated', 'suggestions': suggestions}), 200
     except Exception as e:
         return jsonify({'message': 'Failed to improve resume', 'error': str(e)}), 500
+
+# ============ NEW ATS ENDPOINTS ============
+
+@resumes_bp.route('/<resume_id>/ats-analyze', methods=['POST'])
+@token_required
+def ats_analyze_resume(current_user_id, resume_id):
+    """Perform comprehensive ATS analysis on a resume"""
+    try:
+        # Check if ATS service is available
+        if not ATS_AVAILABLE or not ats_service:
+            return jsonify({
+                'message': 'ATS service unavailable. Please use Python 3.11 or 3.12 for full ATS features.',
+                'error': 'Python version compatibility issue'
+            }), 503
+        
+        if not validate_object_id(resume_id):
+            return jsonify({'message': 'Invalid resume ID'}), 400
+        
+        resume = resumes_collection.find_one({
+            '_id': ObjectId(resume_id),
+            'user_id': ObjectId(current_user_id)
+        })
+        
+        if not resume:
+            return jsonify({'message': 'Resume not found'}), 404
+        
+        if 'extracted_text' not in resume:
+            return jsonify({'message': 'No text content to analyze'}), 400
+        
+        # Perform comprehensive ATS analysis
+        ats_analysis = ats_service.analyze_resume_comprehensive(
+            resume['extracted_text'],
+            resume.get('job_role', 'General')
+        )
+        
+        # Update resume with new analysis
+        resumes_collection.update_one(
+            {'_id': ObjectId(resume_id)},
+            {
+                '$set': {
+                    'ats_analysis': ats_analysis,
+                    'updated_at': datetime.utcnow()
+                }
+            }
+        )
+        
+        return jsonify({
+            'message': 'ATS analysis completed',
+            'analysis': ats_analysis
+        }), 200
+        
+    except Exception as e:
+        return jsonify({'message': 'Failed to analyze resume', 'error': str(e)}), 500
+
+@resumes_bp.route('/batch-analyze', methods=['POST'])
+@token_required
+def batch_analyze_resumes(current_user_id):
+    """Analyze multiple resumes at once"""
+    try:
+        data = request.get_json()
+        resume_ids = data.get('resume_ids', [])
+        
+        if not resume_ids:
+            return jsonify({'message': 'No resume IDs provided'}), 400
+        
+        if len(resume_ids) > 10:
+            return jsonify({'message': 'Maximum 10 resumes can be analyzed at once'}), 400
+        
+        results = []
+        for resume_id in resume_ids:
+            if not validate_object_id(resume_id):
+                results.append({
+                    'resume_id': resume_id,
+                    'status': 'error',
+                    'message': 'Invalid resume ID'
+                })
+                continue
+            
+            resume = resumes_collection.find_one({
+                '_id': ObjectId(resume_id),
+                'user_id': ObjectId(current_user_id)
+            })
+            
+            if not resume:
+                results.append({
+                    'resume_id': resume_id,
+                    'status': 'error',
+                    'message': 'Resume not found'
+                })
+                continue
+            
+            try:
+                # Perform ATS analysis
+                ats_analysis = ats_service.analyze_resume_comprehensive(
+                    resume.get('extracted_text', ''),
+                    resume.get('job_role', 'General')
+                )
+                
+                # Update resume
+                resumes_collection.update_one(
+                    {'_id': ObjectId(resume_id)},
+                    {
+                        '$set': {
+                            'ats_analysis': ats_analysis,
+                            'updated_at': datetime.utcnow()
+                        }
+                    }
+                )
+                
+                results.append({
+                    'resume_id': resume_id,
+                    'status': 'success',
+                    'filename': resume.get('filename', 'Unknown'),
+                    'overall_score': ats_analysis.get('overall_ats_score', 0),
+                    'analysis': ats_analysis
+                })
+            except Exception as e:
+                results.append({
+                    'resume_id': resume_id,
+                    'status': 'error',
+                    'message': str(e)
+                })
+        
+        return jsonify({
+            'message': f'Analyzed {len(results)} resumes',
+            'results': results
+        }), 200
+        
+    except Exception as e:
+        return jsonify({'message': 'Batch analysis failed', 'error': str(e)}), 500
+
+@resumes_bp.route('/<resume_id>/ats-report', methods=['GET'])
+@token_required
+def get_ats_report(current_user_id, resume_id):
+    """Get detailed ATS report for a resume"""
+    try:
+        if not validate_object_id(resume_id):
+            return jsonify({'message': 'Invalid resume ID'}), 400
+        
+        resume = resumes_collection.find_one({
+            '_id': ObjectId(resume_id),
+            'user_id': ObjectId(current_user_id)
+        })
+        
+        if not resume:
+            return jsonify({'message': 'Resume not found'}), 404
+        
+        ats_analysis = resume.get('ats_analysis')
+        
+        if not ats_analysis:
+            return jsonify({
+                'message': 'No ATS analysis available. Please analyze the resume first.',
+                'has_analysis': False
+            }), 200
+        
+        # Format report
+        report = {
+            'resume_id': str(resume['_id']),
+            'filename': resume.get('filename', 'Unknown'),
+            'job_role': resume.get('job_role', 'General'),
+            'analyzed_at': resume.get('updated_at'),
+            'overall_ats_score': ats_analysis.get('overall_ats_score', 0),
+            'scores': ats_analysis.get('scores', {}),
+            'keywords': ats_analysis.get('keywords', {}),
+            'sections': ats_analysis.get('sections', {}),
+            'recommendations': ats_analysis.get('recommendations', []),
+            'detailed_feedback': ats_analysis.get('detailed_feedback', ''),
+            'strengths': ats_analysis.get('strengths', []),
+            'weaknesses': ats_analysis.get('weaknesses', []),
+            'has_analysis': True
+        }
+        
+        return jsonify({'report': report}), 200
+        
+    except Exception as e:
+        return jsonify({'message': 'Failed to get ATS report', 'error': str(e)}), 500
+
+@resumes_bp.route('/compare', methods=['POST'])
+@token_required
+def compare_resumes(current_user_id):
+    """Compare multiple resumes"""
+    try:
+        data = request.get_json()
+        resume_ids = data.get('resume_ids', [])
+        
+        if len(resume_ids) < 2:
+            return jsonify({'message': 'At least 2 resumes required for comparison'}), 400
+        
+        if len(resume_ids) > 5:
+            return jsonify({'message': 'Maximum 5 resumes can be compared at once'}), 400
+        
+        # Fetch all resumes
+        resumes_data = []
+        for resume_id in resume_ids:
+            if not validate_object_id(resume_id):
+                continue
+            
+            resume = resumes_collection.find_one({
+                '_id': ObjectId(resume_id),
+                'user_id': ObjectId(current_user_id)
+            })
+            
+            if resume:
+                resumes_data.append({
+                    'id': str(resume['_id']),
+                    'filename': resume.get('filename', 'Unknown'),
+                    'job_role': resume.get('job_role', 'General'),
+                    'ats_analysis': resume.get('ats_analysis', {})
+                })
+        
+        if len(resumes_data) < 2:
+            return jsonify({'message': 'Not enough valid resumes found'}), 400
+        
+        # Perform comparison using ATS service
+        comparison_result = ats_service.compare_resumes(resumes_data)
+        
+        return jsonify({
+            'message': 'Comparison completed',
+            'comparison': comparison_result,
+            'resumes_compared': len(resumes_data)
+        }), 200
+        
+    except Exception as e:
+        return jsonify({'message': 'Comparison failed', 'error': str(e)}), 500

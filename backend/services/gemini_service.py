@@ -203,7 +203,7 @@ Return ONLY the question, no additional text."""
             response = self.model.generate_content(prompt)
             return response.text.strip()
         except Exception as e:
-            return f"Tell me about a time when you demonstrated {company_info.get('values', ['leadership'])[0]}."
+            return f"Tell me about a time when you demonstrated leadership or problem-solving skills."
     
     def provide_realtime_feedback(self, question, partial_answer, company):
         """Provide real-time feedback on partial answer"""
@@ -327,4 +327,253 @@ Provide report as JSON:
         except Exception as e:
             return None
 
+    def analyze_resume_for_interview(self, resume_text, job_role):
+        """Analyze resume and extract key points for interview practice"""
+        if not self.model:
+            return None
+        
+        try:
+            prompt = f"""Analyze this resume for interview practice preparation.
+
+Resume Content:
+{resume_text[:4000]}
+
+Job Role: {job_role}
+
+Extract and return ONLY a valid JSON object with this structure:
+{{
+  "skills": ["skill1", "skill2", "skill3"],
+  "projects": [
+    {{"name": "Project Name", "description": "Brief desc", "technologies": ["tech1", "tech2"]}}
+  ],
+  "experience": [
+    {{"company": "Company", "role": "Role", "duration": "2 years", "achievements": ["achievement1"]}}
+  ],
+  "education": [
+    {{"degree": "Degree", "institution": "School", "year": "2020"}}
+  ],
+  "keyStrengths": ["strength1", "strength2"],
+  "potentialWeaknesses": ["gap1", "gap2"]
+}}
+
+Focus on extracting concrete, specific information that can be used in interview questions."""
+
+            response = self.model.generate_content(prompt)
+            response_text = response.text
+            
+            try:
+                start_idx = response_text.find('{')
+                end_idx = response_text.rfind('}') + 1
+                if start_idx != -1 and end_idx > start_idx:
+                    return json.loads(response_text[start_idx:end_idx])
+            except:
+                pass
+            
+            return None
+        except Exception as e:
+            return None
+    
+    def generate_resume_based_question(self, resume_analysis, company, company_info, job_role, difficulty, interview_type, question_number):
+        """Generate interview question based on resume content"""
+        if not self.model or not resume_analysis:
+            return self.generate_interview_question(company, company_info, job_role, difficulty, interview_type, question_number)
+        
+        try:
+            skills_str = ", ".join(resume_analysis.get('skills', [])[:5])
+            projects = resume_analysis.get('projects', [])
+            project_names = ", ".join([p.get('name', '') for p in projects[:3]])
+            
+            prompt = f"""You are conducting a {interview_type} interview for {company}.
+
+Company Culture: {company_info.get('culture', 'Professional')}
+Job Role: {job_role}
+Difficulty: {difficulty}
+
+Candidate's Resume Highlights:
+- Skills: {skills_str}
+- Projects: {project_names}
+- Key Strengths: {", ".join(resume_analysis.get('keyStrengths', [])[:3])}
+
+Generate ONE specific interview question that:
+1. Targets something specific from their resume (a skill, project, or experience)
+2. Tests their depth of knowledge on what they claimed
+3. Is appropriate for {difficulty} level
+4. Aligns with {company}'s culture
+
+Examples:
+- "I see you listed [skill] on your resume. Can you walk me through a challenging situation where you used it?"
+- "Tell me about your [project name] project. What was your specific role and the biggest technical challenge?"
+- "You mentioned [experience]. How would you apply that experience to this role at {company}?"
+
+Return ONLY the question, no additional text."""
+
+            response = self.model.generate_content(prompt)
+            return response.text.strip()
+        except Exception as e:
+            return self.generate_interview_question(company, company_info, job_role, difficulty, interview_type, question_number)
+    
+    def provide_resume_guidance(self, question, current_answer, resume_analysis):
+        """Provide real-time guidance based on resume content"""
+        if not self.model or not resume_analysis:
+            return {"hints": [], "relevantPoints": []}
+        
+        try:
+            prompt = f"""You are an interview coach helping a candidate answer this question:
+
+Question: {question}
+Current Answer: {current_answer}
+
+Candidate's Resume Points:
+- Skills: {", ".join(resume_analysis.get('skills', [])[:5])}
+- Projects: {", ".join([p.get('name', '') for p in resume_analysis.get('projects', [])[:3]])}
+- Key Strengths: {", ".join(resume_analysis.get('keyStrengths', [])[:3])}
+
+Provide BRIEF guidance as JSON:
+{{
+  "hints": ["💡 Mention your [specific project/skill]", "🎯 Highlight your experience with [specific thing]"],
+  "relevantPoints": ["Project X from resume", "Skill Y that's relevant"]
+}}
+
+Give 1-2 hints max. Be specific and actionable."""
+
+            response = self.model.generate_content(prompt)
+            response_text = response.text
+            
+            try:
+                start_idx = response_text.find('{')
+                end_idx = response_text.rfind('}') + 1
+                if start_idx != -1 and end_idx > start_idx:
+                    return json.loads(response_text[start_idx:end_idx])
+            except:
+                pass
+            
+            return {"hints": [], "relevantPoints": []}
+        except Exception as e:
+            return {"hints": [], "relevantPoints": []}
+    
+    def evaluate_answer_vs_resume(self, question, answer, resume_analysis, company, job_role):
+        """Evaluate answer and compare with resume content"""
+        if not self.model:
+            return {"score": 70, "feedback": "Answer received.", "corrections": [], "resumeAlignment": {}}
+        
+        try:
+            prompt = f"""Evaluate this interview answer against the candidate's resume:
+
+Question: {question}
+Answer: {answer}
+Company: {company}
+Role: {job_role}
+
+Resume Content:
+- Skills: {", ".join(resume_analysis.get('skills', [])[:8])}
+- Projects: {", ".join([p.get('name', '') for p in resume_analysis.get('projects', [])[:3]])}
+- Experience: {", ".join([e.get('role', '') for e in resume_analysis.get('experience', [])[:2]])}
+
+Provide evaluation as JSON:
+{{
+  "score": 85,
+  "feedback": "Detailed feedback",
+  "corrections": ["Correction 1", "Correction 2"],
+  "resumeAlignment": {{
+    "mentionedSkills": ["skill1", "skill2"],
+    "missedSkills": ["skill3", "skill4"],
+    "mentionedProjects": ["project1"],
+    "missedProjects": ["project2"],
+    "alignmentScore": 75
+  }}
+}}
+
+Score based on:
+- How well they leveraged their resume content
+- Specific examples from their experience
+- Missed opportunities to mention relevant skills/projects"""
+
+            response = self.model.generate_content(prompt)
+            response_text = response.text
+            
+            try:
+                start_idx = response_text.find('{')
+                end_idx = response_text.rfind('}') + 1
+                if start_idx != -1 and end_idx > start_idx:
+                    return json.loads(response_text[start_idx:end_idx])
+            except:
+                pass
+            
+            return {"score": 75, "feedback": response_text, "corrections": [], "resumeAlignment": {}}
+        except Exception as e:
+            return {"score": 70, "feedback": "Good effort!", "corrections": [], "resumeAlignment": {}}
+    
+    def generate_resume_based_report(self, session, resume_analysis):
+        """Generate performance report with resume-specific insights"""
+        if not self.model:
+            return self.generate_performance_report(session)
+        
+        try:
+            questions_summary = "\n".join([
+                f"Q{i+1}: {q['question_text'][:80]}... Score: {q['score']}/100"
+                for i, q in enumerate(session['questions']) if q.get('user_answer')
+            ])
+            
+            avg_score = sum(q.get('score', 0) for q in session['questions'] if q.get('user_answer')) / max(len([q for q in session['questions'] if q.get('user_answer')]), 1)
+            
+            prompt = f"""Generate interview performance report with resume analysis:
+
+Company: {session['company']}
+Role: {session['job_role']}
+Average Score: {avg_score:.1f}/100
+
+Questions & Scores:
+{questions_summary}
+
+Resume Skills: {", ".join(resume_analysis.get('skills', [])[:8])}
+Resume Projects: {", ".join([p.get('name', '') for p in resume_analysis.get('projects', [])[:3]])}
+
+Provide comprehensive report as JSON:
+{{
+  "overall_score": 85,
+  "communication_score": 80,
+  "content_score": 85,
+  "confidence_score": 88,
+  "culture_fit_score": 82,
+  "resume_alignment_score": 75,
+  "strengths": ["Strength 1", "Strength 2", "Strength 3"],
+  "weaknesses": ["Area 1", "Area 2"],
+  "improvement_plan": "Specific steps...",
+  "resumeInsights": {{
+    "mentionedSkills": ["skill1", "skill2"],
+    "missedSkills": ["skill3", "skill4"],
+    "mentionedProjects": ["project1"],
+    "missedProjects": ["project2"],
+    "improvementSuggestions": [
+      {{"category": "Skills", "suggestion": "Better articulate your experience with X", "priority": "high"}},
+      {{"category": "Projects", "suggestion": "Add more details about Project Y", "priority": "medium"}}
+    ]
+  }}
+}}"""
+
+            response = self.model.generate_content(prompt)
+            response_text = response.text
+            
+            try:
+                start_idx = response_text.find('{')
+                end_idx = response_text.rfind('}') + 1
+                if start_idx != -1 and end_idx > start_idx:
+                    return json.loads(response_text[start_idx:end_idx])
+            except:
+                pass
+            
+            # Fallback
+            base_report = self.generate_performance_report(session)
+            if base_report:
+                base_report['resume_alignment_score'] = int(avg_score * 0.8)
+                base_report['resumeInsights'] = {
+                    "mentionedSkills": [],
+                    "missedSkills": resume_analysis.get('skills', [])[:3],
+                    "improvementSuggestions": []
+                }
+            return base_report
+        except Exception as e:
+            return self.generate_performance_report(session)
+
 gemini_service = GeminiService()
+
