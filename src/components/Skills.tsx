@@ -14,10 +14,11 @@ export default function Skills() {
     {
       category: 'Frameworks & Libraries',
       skills: [
+        { name: 'Gen AI', level: 85 },
+        { name: 'LangChain', level: 80 },
         { name: 'Flask', level: 85 },
         { name: 'React', level: 80 },
-        { name: 'TensorFlow', level: 85 },
-        { name: 'Scikit-Learn', level: 80 }
+        { name: 'TensorFlow', level: 85 }
       ]
     },
     {
@@ -84,16 +85,19 @@ export default function Skills() {
                         {skill.level}%
                       </span>
                     </div>
-                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden relative">
                       <div
-                        className="h-full bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transition-all duration-1000 ease-out"
+                        className={`h-full bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transition-all duration-1000 ease-out relative ${
+                          hoveredSkill === `${categoryIndex}-${skillIndex}` ? 'shadow-[0_0_15px_rgba(59,130,246,0.5)]' : ''
+                        }`}
                         style={{
-                          width:
-                            hoveredSkill === `${categoryIndex}-${skillIndex}`
-                              ? `${skill.level}%`
-                              : '0%'
+                          width: `${skill.level}%`
                         }}
-                      ></div>
+                      >
+                        {hoveredSkill === `${categoryIndex}-${skillIndex}` && (
+                          <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -104,6 +108,9 @@ export default function Skills() {
 
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
+            { name: 'Gen AI', icon: '🤖' },
+            { name: 'LLMs', icon: '🧠' },
+            { name: 'NLP', icon: '🗣️' },
             { name: 'IoT', icon: '🔌' },
             { name: 'Computer Vision', icon: '👁️' },
             { name: 'Deep Learning', icon: '🧠' },

@@ -8,7 +8,68 @@
   }
 
   body {
-    @apply font-sans antialiased;
+    @apply font-sans antialiased transition-colors duration-300 overflow-x-hidden;
+    background:
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(59, 130, 246, 0.05) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 0% 0%,
+        rgba(139, 92, 246, 0.05) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 100% 100%,
+        rgba(236, 72, 153, 0.05) 0%,
+        transparent 50%
+      );
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background:
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(30, 58, 138, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 0% 0%,
+        rgba(88, 28, 135, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 100% 100%,
+        rgba(131, 24, 67, 0.1) 0%,
+        transparent 50%
+      );
+    background-color: #030712;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes mesh {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
@@ -39,7 +100,9 @@
   .scroll-reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
   }
 
   .scroll-reveal.animate-fade-in {

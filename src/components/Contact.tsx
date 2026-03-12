@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Send, Instagram } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -71,6 +71,13 @@ export default function Contact() {
       value: 'rahulrathore39769',
       href: 'https://linkedin.com/in/rahulrathore39769',
       color: 'from-blue-600 to-blue-800'
+    },
+    {
+      icon: Instagram,
+      label: 'Instagram',
+      value: 'rahulrathore579',
+      href: 'https://instagram.com/rahulrathore579',
+      color: 'from-pink-500 to-purple-600'
     }
   ];
 

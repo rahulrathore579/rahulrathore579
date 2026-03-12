@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Phone, Download, MessageCircle } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, Download, MessageCircle, Instagram } from 'lucide-react';
 import profileImage from '../assets/meri_photo.png';
 
 export default function Hero() {
@@ -9,6 +9,7 @@ export default function Hero() {
   const [typingSpeed, setTypingSpeed] = useState(150);
 
   const roles = [
+    'Cofounder of FluenzyAI',
     'AI & ML Developer',
     'IoT Developer',
     'Web Developer',
@@ -80,7 +81,7 @@ export default function Hero() {
           </div>
 
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl">
-            Computer Science student passionate about building intelligent systems
+            Cofounder of FluenzyAI & Computer Science student passionate about building intelligent systems
             and innovative solutions using AI, ML, IoT, and modern web technologies.
           </p>
 
@@ -130,6 +131,15 @@ export default function Hero() {
               aria-label="Email"
             >
               <Mail className="w-6 h-6" />
+            </a>
+            <a
+              href="https://instagram.com/rahulrathore579"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-pink-100 dark:hover:bg-pink-900/30 text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-6 h-6" />
             </a>
             <a
               href="tel:+917505238914"
