@@ -57,6 +57,7 @@ export default function DailyTrackerPage() {
     ];
 
     useEffect(() => {
+        console.log('DailyTrackerPage: Mounted, fetching data...');
         fetchHabits();
         fetchStats();
     }, []);

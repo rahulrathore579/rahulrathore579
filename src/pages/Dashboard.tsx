@@ -10,22 +10,24 @@ import ApplicationsPage from '../components/applications/ApplicationsPage';
 import DailyTrackerPage from '../components/tracker/DailyTrackerPage';
 
 export default function Dashboard() {
+    console.log('Dashboard: Rendering sub-routes...');
     return (
         <DashboardLayout>
             <Routes>
-                <Route path="/" element={<DashboardHome />} />
-                <Route path="/assistant" element={<AssistantPage />} />
-                <Route path="/tasks" element={<TasksPage />} />
-                <Route path="/tracker" element={<DailyTrackerPage />} />
-                <Route path="/notes" element={<NotesPage />} />
-                <Route path="/resumes" element={<ResumesPage />} />
-                <Route path="/practice" element={<JobPracticePage />} />
-                <Route path="/applications" element={<ApplicationsPage />} />
+                <Route index element={<DashboardHome />} />
+                <Route path="assistant" element={<AssistantPage />} />
+                <Route path="tasks" element={<TasksPage />} />
+                <Route path="tracker" element={<DailyTrackerPage />} />
+                <Route path="notes" element={<NotesPage />} />
+                <Route path="resumes" element={<ResumesPage />} />
+                <Route path="practice" element={<JobPracticePage />} />
+                <Route path="applications" element={<ApplicationsPage />} />
                 <Route path="*" element={<Navigate to="/dashboard" replace />} />
             </Routes>
         </DashboardLayout>
     );
 }
+
 
 function DashboardHome() {
     const features = [

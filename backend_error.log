@@ -1,0 +1,182 @@
+﻿python : Traceback 
+(most recent call 
+last):
+At line:1 char:1
++ python 
+backend/app.py 2>&1 | 
+Out-File -FilePath 
+backend_error.log -En 
+...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (Traceback (mo   
+ st recent call las    
+t)::String) [], Re    
+moteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+  File "C:\Users\hp\One
+Drive\Desktop\portfolio
+-home\backend\app.py", 
+line 20, in <module>
+    from 
+routes.resumes import 
+resumes_bp
+  File "C:\Users\hp\One
+Drive\Desktop\portfolio
+-home\backend\routes\re
+sumes.py", line 12, in 
+<module>
+    from services.gemin
+i_service import 
+gemini_service
+  File "C:\Users\hp\One
+Drive\Desktop\portfolio
+-home\backend\services\
+gemini_service.py", 
+line 2, in <module>
+    import 
+google.generativeai as 
+genai
+  File "C:\Users\hp\App
+Data\Local\Python\pytho
+ncore-3.14-64\Lib\site-
+packages\google\generat
+iveai\__init__.py", 
+line 45, in <module>
+    from 
+google.generativeai 
+import types
+  File "C:\Users\hp\App
+Data\Local\Python\pytho
+ncore-3.14-64\Lib\site-
+packages\google\generat
+iveai\types\__init__.py
+", line 17, in <module>
+    from google.generat
+iveai.types.discuss_typ
+es import *
+  File "C:\Users\hp\App
+Data\Local\Python\pytho
+ncore-3.14-64\Lib\site-
+packages\google\generat
+iveai\types\discuss_typ
+es.py", line 22, in 
+<module>
+    import google.ai.ge
+nerativelanguage as glm
+  File "C:\Users\hp\App
+Data\Local\Python\pytho
+ncore-3.14-64\Lib\site-
+packages\google\ai\gene
+rativelanguage\__init__
+.py", line 21, in 
+<module>
+    from google.ai.gene
+rativelanguage_v1beta.s
+ervices.discuss_service
+.async_client import (
+        DiscussServiceA
+syncClient,
+    )
+  File "C:\Users\hp\App
+Data\Local\Python\pytho
+ncore-3.14-64\Lib\site-
+packages\google\ai\gene
+rativelanguage_v1beta\_
+_init__.py", line 21, 
+in <module>
+    from .services.disc
+uss_service import Disc
+ussServiceAsyncClient, 
+DiscussServiceClient
+  File "C:\Users\hp\App
+Data\Local\Python\pytho
+ncore-3.14-64\Lib\site-
+packages\google\ai\gene
+rativelanguage_v1beta\s
+ervices\discuss_service
+\__init__.py", line 
+16, in <module>
+    from .async_client 
+import DiscussServiceAs
+yncClient
+  File "C:\Users\hp\App
+Data\Local\Python\pytho
+ncore-3.14-64\Lib\site-
+packages\google\ai\gene
+rativelanguage_v1beta\s
+ervices\discuss_service
+\async_client.py", 
+line 31, in <module>
+    from 
+google.api_core import 
+exceptions as 
+core_exceptions
+  File "C:\Users\hp\App
+Data\Local\Python\pytho
+ncore-3.14-64\Lib\site-
+packages\google\api_cor
+e\exceptions.py", line 
+29, in <module>
+    from google.rpc 
+import 
+error_details_pb2
+  File "C:\Users\hp\App
+Data\Local\Python\pytho
+ncore-3.14-64\Lib\site-
+packages\google\rpc\err
+or_details_pb2.py", 
+line 21, in <module>
+    from 
+google.protobuf import 
+descriptor as 
+_descriptor
+  File "C:\Users\hp\App
+Data\Local\Python\pytho
+ncore-3.14-64\Lib\site-
+packages\google\protobu
+f\descriptor.py", line 
+17, in <module>
+    from google.protobu
+f.internal import 
+api_implementation
+  File "C:\Users\hp\App
+Data\Local\Python\pytho
+ncore-3.14-64\Lib\site-
+packages\google\protobu
+f\internal\api_implemen
+tation.py", line 51, 
+in <module>
+    if _CanImport('goog
+le._upb._message'):
+       ~~~~~~~~~~^^^^^^
+^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\App
+Data\Local\Python\pytho
+ncore-3.14-64\Lib\site-
+packages\google\protobu
+f\internal\api_implemen
+tation.py", line 41, 
+in _CanImport
+    mod = importlib.imp
+ort_module(mod_name)
+  File "C:\Users\hp\App
+Data\Local\Python\pytho
+ncore-3.14-64\Lib\impor
+tlib\__init__.py", 
+line 88, in 
+import_module
+    return _bootstrap._
+gcd_import(name[level:]
+, package, level)
+           ~~~~~~~~~~~~
+~~~~~~~~~~^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+TypeError: Metaclasses 
+with custom tp_new are 
+not supported.

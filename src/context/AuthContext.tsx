@@ -18,17 +18,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        // Check for stored auth on mount
+        console.log('AuthProvider: Checking for stored auth...');
         const storedUser = authService.getStoredUser();
         const storedToken = authService.getStoredToken();
 
         if (storedUser && storedToken) {
+            console.log('AuthProvider: Found stored user:', storedUser.email);
             setUser(storedUser);
+        } else {
+            console.log('AuthProvider: No stored auth found');
         }
         setIsLoading(false);
     }, []);
 
     const login = async (credentials: LoginCredentials) => {
+        console.log('AuthProvider: Logging in...', credentials.email);
         const response = await authService.login(credentials);
         authService.storeAuth(response.token, response.user);
         setUser(response.user);
@@ -68,3 +72,4 @@ export function useAuth() {
     }
     return context;
 }
+
