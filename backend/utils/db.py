@@ -1,5 +1,8 @@
 from pymongo import MongoClient
 from config import Config
+import os
+
+DB_NAME = os.getenv('MONGODB_DB_NAME', 'personal_assistant')
 
 class Database:
     _instance = None
@@ -8,8 +11,11 @@ class Database:
         if cls._instance is None:
             cls._instance = super(Database, cls).__new__(cls)
             cls._instance.client = MongoClient(Config.MONGODB_URI)
-            cls._instance.db = cls._instance.client.get_default_database()
+            # Explicitly use DB name from env or fallback — avoids ConfigurationError
+            # when MongoDB URI doesn't include a database name
+            cls._instance.db = cls._instance.client[DB_NAME]
         return cls._instance
+
     
     def get_collection(self, collection_name):
         return self.db[collection_name]
