@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+// In development, Vite proxies /api to localhost:5000
+// In production, VITE_API_URL should point to the Render backend URL (e.g. https://your-app.onrender.com/api)
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 // Create axios instance
 const api = axios.create({
@@ -9,6 +11,7 @@ const api = axios.create({
         'Content-Type': 'application/json',
     },
 });
+
 
 // Add token to requests
 api.interceptors.request.use((config) => {

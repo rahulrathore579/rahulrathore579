@@ -1,17 +1,23 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from config import Config
+import os
 
 app = Flask(__name__)
 app.config.from_object(Config)
 
+# Read allowed origins from env (comma-separated), fallback to wildcard for dev
+allowed_origins_str = os.getenv('ALLOWED_ORIGINS', '*')
+allowed_origins = [o.strip() for o in allowed_origins_str.split(',')] if allowed_origins_str != '*' else '*'
+
 CORS(app, resources={
     r"/api/*": {
-        "origins": "*",  # Allow all origins for development
+        "origins": allowed_origins,
         "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"]
     }
 })
+
 
 # Import and register blueprints
 from routes.auth import auth_bp
