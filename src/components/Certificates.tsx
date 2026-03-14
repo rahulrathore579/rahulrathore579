@@ -12,23 +12,23 @@ const ImageModal = ({ images, isOpen, onClose }: ImageModalProps) => {
   if (!isOpen) return null;
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="relative max-w-5xl w-full bg-white dark:bg-gray-900 rounded-3xl p-8 overflow-hidden shadow-2xl flex flex-col items-center">
+      <div className="relative max-w-5xl w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-white/10 rounded-3xl p-8 overflow-hidden shadow-2xl flex flex-col items-center">
         <div className="flex justify-between items-center w-full mb-6">
-          <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Event Highlights</h3>
-          <button 
+          <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">Event Highlights</h3>
+          <button
             onClick={onClose}
-            className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-red-100 dark:hover:bg-red-900/30 transition-all duration-300 transform hover:rotate-90"
+            className="p-3 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-red-100 dark:hover:bg-red-500/20 border border-gray-200 dark:border-white/10 transition-all duration-300 transform hover:rotate-90"
           >
-            <X className="w-6 h-6" />
+            <X className="w-6 h-6 text-gray-700 dark:text-white" />
           </button>
         </div>
         <div className="grid grid-cols-1 gap-6 max-h-[75vh] overflow-y-auto px-4 w-full scrollbar-hidden">
           {images.map((img, i) => (
             <div key={i} className="flex flex-col items-center">
-              <img 
-                src={img} 
-                alt={`Event ${i + 1}`} 
-                className="rounded-2xl w-full max-w-3xl h-auto object-contain shadow-2xl border-4 border-gray-100 dark:border-gray-800 hover:scale-[1.01] transition-transform duration-500" 
+              <img
+                src={img}
+                alt={`Event ${i + 1}`}
+                className="rounded-2xl w-full max-w-3xl h-auto object-contain shadow-2xl border border-gray-100 dark:border-white/10 hover:scale-[1.01] transition-transform duration-500"
               />
             </div>
           ))}
@@ -37,14 +37,14 @@ const ImageModal = ({ images, isOpen, onClose }: ImageModalProps) => {
     </div>
   );
 };
-// CertificateCard component that encapsulates the InView animation hook
+
 const CertificateCard = ({ cert, index, setModalData }: { cert: any, index: number, setModalData: (data: any) => void }) => {
   const { ref, isInView } = useInView({ threshold: 0.15, triggerOnce: true });
 
   return (
     <div
       ref={ref}
-      className={`group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-700 transform ${
+      className={`group relative bg-white/70 dark:bg-white/5 backdrop-blur-xl border border-gray-200/80 dark:border-white/10 rounded-2xl overflow-hidden hover:border-blue-400/50 dark:hover:border-blue-500/40 transition-all duration-700 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/10 ${
         isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
@@ -54,37 +54,31 @@ const CertificateCard = ({ cert, index, setModalData }: { cert: any, index: numb
       ></div>
 
       <div className="relative p-8 z-10">
-        {/* Icon & Date */}
         <div className="flex items-start justify-between mb-6">
           <div
-            className={`w-16 h-16 bg-gradient-to-br ${cert.color} rounded-xl flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg`}
+            className={`w-16 h-16 bg-gradient-to-br ${cert.color} rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}
           >
             {cert.icon}
           </div>
-          <div
-            className={`px-4 py-2 bg-gradient-to-r ${cert.color} text-white rounded-full text-sm font-medium`}
-          >
+          <div className={`px-4 py-2 bg-gradient-to-r ${cert.color} text-white rounded-full text-sm font-semibold shadow-md`}>
             {cert.date}
           </div>
         </div>
 
-        {/* Certificate Title & Issuer */}
         <div className="mb-4">
-          <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+          <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
             {cert.title}
           </h3>
-          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-3">
-            <Award className="w-5 h-5" />
-            <span className="font-semibold">{cert.issuer}</span>
+          <div className="flex items-center gap-2 text-gray-500 dark:text-gray-500 mb-3">
+            <Award className="w-4 h-4" />
+            <span className="font-semibold text-gray-600 dark:text-gray-400">{cert.issuer}</span>
           </div>
         </div>
 
-        {/* Description */}
-        <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">
+        <p className="text-gray-500 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors mb-6 line-clamp-3 text-sm leading-relaxed">
           {cert.description}
         </p>
 
-        {/* Link Buttons */}
         <div className="flex flex-wrap gap-4 relative z-20">
           <a
             href={cert.link}
@@ -96,7 +90,7 @@ const CertificateCard = ({ cert, index, setModalData }: { cert: any, index: numb
                 alert('Certificate image/link coming soon!');
               }
             }}
-            className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium hover:gap-3 transition-all duration-300 cursor-pointer"
+            className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium hover:gap-3 transition-all duration-300 cursor-pointer text-sm"
           >
             <span>View Certificate</span>
             <ExternalLink className="w-4 h-4" />
@@ -105,7 +99,7 @@ const CertificateCard = ({ cert, index, setModalData }: { cert: any, index: numb
           {cert.eventPictures && cert.eventPictures.length > 0 && (
             <button
               onClick={() => setModalData({ isOpen: true, images: cert.eventPictures! })}
-              className="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 font-medium hover:gap-3 transition-all duration-300"
+              className="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium hover:gap-3 transition-all duration-300 text-sm"
             >
               <ImageIcon className="w-4 h-4" />
               <span>Event Pictures</span>
@@ -113,7 +107,7 @@ const CertificateCard = ({ cert, index, setModalData }: { cert: any, index: numb
           )}
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
       </div>
     </div>
   );
@@ -128,12 +122,12 @@ export default function Certificates() {
       issuer: 'GLA University',
       date: '2026',
       description:
-        'Winner of AI Nirman 2026 competition, showcasing FluenzyAI, Technavya\'26 PROJ-E-X. Demonstrated innovation in AI-powered communication solutions.',
+        "Winner of AI Nirman 2026 competition, showcasing FluenzyAI, Technavya'26 PROJ-E-X. Demonstrated innovation in AI-powered communication solutions.",
       color: 'from-yellow-500 to-orange-500',
       icon: '🏆',
       link: 'public/certificate/ainirman.jpeg',
       eventPictures: [
-        'assets/certificate/ainirman/ainirman.jpeg', // Placeholder paths
+        'assets/certificate/ainirman/ainirman.jpeg',
         'assets/certificate/ainirman/WhatsApp Image 2026-03-12 at 10.33.06 AM (1).jpeg',
         'assets/certificate/ainirman/WhatsApp Image 2026-03-12 at 10.33.06 AM.jpeg',
         'assets/certificate/ainirman/WhatsApp Image 2026-03-12 at 10.33.07 AM.jpeg'
@@ -202,34 +196,38 @@ export default function Certificates() {
   return (
     <section
       id="certificates"
-      className="py-20 px-4 bg-white dark:bg-gray-900 scroll-reveal"
+      className="py-24 px-4 scroll-reveal relative overflow-hidden bg-gray-50 dark:bg-gray-950"
     >
-      <ImageModal 
-        isOpen={modalData.isOpen} 
-        images={modalData.images} 
-        onClose={() => setModalData({ isOpen: false, images: [] })} 
+      {/* Decorative Background Glows */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 dark:bg-blue-600/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 dark:bg-purple-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+
+      <ImageModal
+        isOpen={modalData.isOpen}
+        images={modalData.images}
+        onClose={() => setModalData({ isOpen: false, images: [] })}
       />
-      <div className="container mx-auto max-w-6xl">
-        {/* Heading Section */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent pb-2 tracking-tight">
             Certificates & Achievements
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Continuous learning and professional development milestones
+          <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full shadow-[0_0_20px_rgba(59,130,246,0.4)]"></div>
+          <p className="mt-8 text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-lg font-light">
+            Continuous learning and{' '}
+            <span className="text-pink-600 dark:text-pink-400 font-medium">professional development</span> milestones
           </p>
         </div>
 
-        {/* Certificates Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {certificates.map((cert, index) => (
             <CertificateCard key={index} cert={cert} index={index} setModalData={setModalData} />
           ))}
         </div>
 
-        {/* Stats Section */}
-        <div className="mt-16 text-center">
+        <div className="mt-20 text-center">
           <div className="inline-block">
             <div className="flex flex-wrap justify-center gap-4">
               {[
@@ -240,12 +238,12 @@ export default function Certificates() {
               ].map((stat, index) => (
                 <div
                   key={index}
-                  className="px-6 py-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl hover:shadow-lg transition-all duration-300"
+                  className="px-6 py-4 bg-white/70 dark:bg-white/5 backdrop-blur-xl border border-gray-200/80 dark:border-white/10 rounded-2xl hover:border-blue-400/50 dark:hover:border-blue-500/40 hover:-translate-y-1 transition-all duration-300 shadow-sm"
                 >
-                  <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-1">
+                  <div className="text-3xl font-black bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-1">
                     {stat.count}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">
+                  <div className="text-sm text-gray-500 dark:text-gray-500 font-medium">
                     {stat.name}
                   </div>
                 </div>
