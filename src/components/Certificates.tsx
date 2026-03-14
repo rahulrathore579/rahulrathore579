@@ -51,8 +51,10 @@ export default function Certificates() {
       icon: '🏆',
       link: 'public/certificate/ainirman.jpeg',
       eventPictures: [
-        'public/certificate/ainirman.jpeg', // Placeholder paths
-        'public/certificate/ainirman.jpeg'
+        'assets/certificate/ainirman/ainirman.jpeg', // Placeholder paths
+        'assets/certificate/ainirman/WhatsApp Image 2026-03-12 at 10.33.06 AM (1).jpeg',
+        'assets/certificate/ainirman/WhatsApp Image 2026-03-12 at 10.33.06 AM.jpeg',
+        'assets/certificate/ainirman/WhatsApp Image 2026-03-12 at 10.33.07 AM.jpeg'
       ]
     },
     {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Phone, Download, MessageCircle, Instagram } from 'lucide-react';
 import profileImage from '../assets/meri_photo.png';
+import heroBgImage from '../assets/image7copy.png';
 
 export default function Hero() {
   const [text, setText] = useState('');
@@ -55,11 +56,12 @@ export default function Hero() {
       id="home"
       className="min-h-screen flex items-center justify-center pt-20 px-4 relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"></div>
+      <div className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-100" style={{ backgroundImage: `url(${heroBgImage})` }}></div>
+      <div className="absolute inset-0 bg-white/50 dark:bg-gray-900/70"></div>
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-300/20 dark:bg-blue-600/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-300/20 dark:bg-purple-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-300/30 dark:bg-blue-600/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-300/30 dark:bg-purple-600/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">

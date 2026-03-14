@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { ExternalLink, Github, X, ImageIcon } from 'lucide-react';
+import fluenzyaiImg from '../assets/projects/fluenzyai.png';
+import zapkartImg from '../assets/projects/zapkart.png';
 
 interface ProjectModalProps {
   project: {
@@ -110,10 +112,10 @@ export default function Projects() {
       tech: ['Next.js', 'TypeScript', 'TailwindCSS', 'OpenAI', 'PostgreSQL', 'Cloud'],
       gradient: 'from-purple-600 to-indigo-600',
       github: 'https://github.com/rahulrathore579',
-      demo: 'https://fluenzy-ai.vercel.app/',
-      bgImage: 'public/projects/fluenzyai.png',
+      demo: 'https://fluenzyai.app/',
+      bgImage: fluenzyaiImg,
       projectPictures: [
-        'public/projects/fluenzyai.png'
+        fluenzyaiImg
       ]
     },
     {
@@ -124,9 +126,9 @@ export default function Projects() {
       gradient: 'from-blue-600 to-indigo-600',
       github: 'https://github.com/rahulrathore579',
       demo: 'https://smart-classroom-demo.vercel.app/',
-      bgImage: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1974&auto=format&fit=crop',
+      bgImage: 'src/assets/projects/image1copy.png',
       projectPictures: [
-        'https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1974&auto=format&fit=crop'
+        'src/assets/projects/image1copy.png'
       ]
     },
     {
@@ -149,10 +151,10 @@ export default function Projects() {
       tech: ['IoT', 'OpenCV', 'Python', 'Arduino', 'Computer Vision', 'AI/ML', 'Barcode Scan', 'React'],
       gradient: 'from-green-500 to-teal-500',
       github: 'https://github.com/rahulrathore579',
-      demo: 'https://smart-cart-demo.vercel.app/',
-      bgImage: 'public/projects/zapkart.png',
+      demo: 'https://zapkart-demo.onrender.com/',
+      bgImage: zapkartImg,
       projectPictures: [
-        'public/projects/zapkart.png'
+        zapkartImg
       ]
     },
     {
@@ -162,10 +164,10 @@ export default function Projects() {
       tech: ['IoT', 'AI/ML', 'Sensors', 'Python', 'Flask'],
       gradient: 'from-red-500 to-orange-500',
       github: 'https://github.com/rahulrathore579',
-      demo: 'https://healthcare-monitor-demo.vercel.app/',
-      bgImage: 'https://images.unsplash.com/photo-1576091160550-217359f481c0?q=80&w=2070&auto=format&fit=crop',
+      demo: '#/',
+      bgImage: 'src/assets/projects/image3copy.png',
       projectPictures: [
-        'https://images.unsplash.com/photo-1576091160550-217359f481c0?q=80&w=2070&auto=format&fit=crop'
+        'src/assets/projects/image3copy.png'
       ]
     },
     {
@@ -176,9 +178,9 @@ export default function Projects() {
       gradient: 'from-indigo-500 to-blue-500',
       github: 'https://github.com/rahulrathore579',
       demo: 'https://product-recognition-demo.vercel.app/',
-      bgImage: 'https://images.unsplash.com/photo-1555255707-c07966488bc0?q=80&w=2074&auto=format&fit=crop',
+      bgImage: 'src/assets/projects/imagecopy2.png',
       projectPictures: [
-        'https://images.unsplash.com/photo-1555255707-c07966488bc0?q=80&w=2074&auto=format&fit=crop'
+        'src/assets/projects/imagecopy2.png'
       ]
     },
     {
@@ -189,9 +191,9 @@ export default function Projects() {
       gradient: 'from-yellow-500 to-orange-500',
       github: 'https://github.com/rahulrathore579',
       demo: 'https://data-dashboard-demo.vercel.app/',
-      bgImage: 'https://images.unsplash.com/photo-1551288049-bbbda5012ef7?q=80&w=2070&auto=format&fit=crop',
+      bgImage: 'src/assets/projects/imagecopy3.png',
       projectPictures: [
-        'https://images.unsplash.com/photo-1551288049-bbbda5012ef7?q=80&w=2070&auto=format&fit=crop'
+        'src/assets/projects/imagecopy3.png'
       ]
     }
   ];
@@ -221,7 +223,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer"
+              className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer border border-gray-200/50 dark:border-gray-700/50 h-[380px] sm:h-[420px] flex flex-col justify-end"
               onClick={() => setSelectedProject({ 
                 title: project.title, 
                 description: project.description, 
@@ -231,72 +233,80 @@ export default function Projects() {
                 tech: project.tech 
               })}
             >
-              {/* Background Image Overlay - Focused on upper part */}
+              {/* Full Background Image */}
               <div 
-                className="absolute top-0 left-0 right-0 h-48 z-0 opacity-60 group-hover:opacity-80 transition-opacity duration-500 bg-cover bg-top"
-                style={{ 
-                  backgroundImage: `url(${project.bgImage})`,
-                  maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)'
-                }}
-              ></div>
+                className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{ backgroundImage: `url(${project.bgImage})` }}
+              />
+              
+              {/* Gradient overlays to ensure text is readable */}
+              <div className="absolute inset-0 z-10 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className={`absolute inset-0 z-10 bg-gradient-to-br ${project.gradient} opacity-20 group-hover:opacity-40 transition-opacity duration-500 mix-blend-overlay`} />
 
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-1`}
-              ></div>
-
-              <div className="p-6 relative z-10">
-                <div className="h-16 mb-4"></div> {/* Spacer for removed icon */}
-
-                <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-200 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+              {/* Card Content - positioned at bottom */}
+              <div className="p-6 relative z-20 flex flex-col justify-end h-full">
+                <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
                   {project.title}
                 </h3>
+                  
+                {/* Expandable content area */}
+                <div className="max-h-0 group-hover:max-h-[500px] transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100 overflow-hidden">
+                  <div className="pt-2">
+                    <p className="text-gray-300 mb-4 line-clamp-3 text-sm">
+                      {project.description}
+                    </p>
 
-                <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-4">
-                  {project.description}
-                </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech.slice(0, 4).map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-2 py-1 text-xs font-medium bg-white/10 backdrop-blur-sm text-white rounded-md border border-white/20"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.tech.length > 4 && (
+                        <span className="px-2 py-1 text-xs font-medium bg-white/10 backdrop-blur-sm text-white rounded-md border border-white/20">
+                          +{project.tech.length - 4}
+                        </span>
+                      )}
+                    </div>
 
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex justify-between items-center">
-                  <div className="flex gap-4">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github className="w-5 h-5" />
-                      <span className="text-sm font-medium">Code</span>
-                    </a>
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <ExternalLink className="w-5 h-5" />
-                      <span className="text-sm font-medium">Demo</span>
-                    </a>
-                  </div>
-                  <div className="text-gray-400 dark:text-gray-500">
-                    <ImageIcon className="w-5 h-5" />
+                    <div className="flex justify-between items-center">
+                      <div className="flex gap-4">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-gray-300 hover:text-white transition-colors"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <Github className="w-4 h-4" />
+                          <span className="text-sm font-medium">Code</span>
+                        </a>
+                        {project.demo !== '#' && (
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-gray-300 hover:text-white transition-colors"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                            <span className="text-sm font-medium">Demo</span>
+                          </a>
+                        )}
+                      </div>
+                      <div className="text-white/50">
+                        <ImageIcon className="w-5 h-5" />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              
+              {/* Bottom decorative bar */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-30"></div>
             </div>
           ))}
         </div>
