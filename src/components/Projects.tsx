@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { ExternalLink, Github, X, ImageIcon } from 'lucide-react';
 import fluenzyaiImg from '../assets/projects/fluenzyai.png';
 import zapkartImg from '../assets/projects/zapkart.png';
+import aiSmartClassroomImg from '../assets/projects/image1copy.png';
+import healthcareImg from '../assets/projects/image3copy.png';
+import productRecogImg from '../assets/projects/imagecopy2.png';
+import dataDashboardImg from '../assets/projects/imagecopy3.png';
 
 interface ProjectModalProps {
   project: {
@@ -126,9 +130,9 @@ export default function Projects() {
       gradient: 'from-blue-600 to-indigo-600',
       github: 'https://github.com/rahulrathore579',
       demo: 'https://smart-classroom-demo.vercel.app/',
-      bgImage: 'src/assets/projects/image1copy.png',
+      bgImage: aiSmartClassroomImg,
       projectPictures: [
-        'src/assets/projects/image1copy.png'
+        aiSmartClassroomImg
       ]
     },
     {
@@ -165,9 +169,9 @@ export default function Projects() {
       gradient: 'from-red-500 to-orange-500',
       github: 'https://github.com/rahulrathore579',
       demo: '#/',
-      bgImage: 'src/assets/projects/image3copy.png',
+      bgImage: healthcareImg,
       projectPictures: [
-        'src/assets/projects/image3copy.png'
+        healthcareImg
       ]
     },
     {
@@ -178,9 +182,9 @@ export default function Projects() {
       gradient: 'from-indigo-500 to-blue-500',
       github: 'https://github.com/rahulrathore579',
       demo: 'https://product-recognition-demo.vercel.app/',
-      bgImage: 'src/assets/projects/imagecopy2.png',
+      bgImage: productRecogImg,
       projectPictures: [
-        'src/assets/projects/imagecopy2.png'
+        productRecogImg
       ]
     },
     {
@@ -191,9 +195,9 @@ export default function Projects() {
       gradient: 'from-yellow-500 to-orange-500',
       github: 'https://github.com/rahulrathore579',
       demo: 'https://data-dashboard-demo.vercel.app/',
-      bgImage: 'src/assets/projects/imagecopy3.png',
+      bgImage: dataDashboardImg,
       projectPictures: [
-        'src/assets/projects/imagecopy3.png'
+        dataDashboardImg
       ]
     }
   ];
