@@ -1,4 +1,63 @@
 import { Briefcase, Calendar } from 'lucide-react';
+import { useInView } from '../hooks/useInView';
+
+const ExperienceCard = ({ exp, index }: { exp: any, index: number }) => {
+  const { ref, isInView } = useInView({ threshold: 0.2, triggerOnce: true });
+  
+  return (
+    <div
+      ref={ref}
+      className={`relative flex flex-col md:flex-row gap-8 transition-all duration-700 transform ${
+        isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      } ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+      style={{ transitionDelay: `${index * 150}ms` }}
+    >
+      <div className="md:w-1/2"></div>
+
+      <div
+        className={`absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-gradient-to-r ${exp.color} border-4 border-white dark:border-gray-800 transform -translate-x-1/2 shadow-lg transition-transform duration-500 delay-300 ${
+          isInView ? 'scale-100' : 'scale-0'
+        }`}
+      ></div>
+
+      <div className="md:w-1/2 ml-16 md:ml-0">
+        <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
+          <div
+            className={`inline-block px-4 py-1 bg-gradient-to-r ${exp.color} text-white rounded-full text-sm font-medium mb-4`}
+          >
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4" />
+              {exp.period}
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-bold mb-2 text-gray-800 dark:text-gray-200 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+            {exp.title}
+          </h3>
+
+          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-4">
+            <Briefcase className="w-5 h-5" />
+            <span className="font-semibold">{exp.company}</span>
+            <span>•</span>
+            <span>{exp.location}</span>
+          </div>
+
+          <ul className="space-y-2">
+            {exp.description.map((item: string, itemIndex: number) => (
+              <li
+                key={itemIndex}
+                className="flex items-start gap-3 text-gray-600 dark:text-gray-400"
+              >
+                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function Experience() {
   const experiences = [
@@ -51,54 +110,7 @@ export default function Experience() {
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
-              <div
-                key={index}
-                className={`relative flex flex-col md:flex-row gap-8 ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
-              >
-                <div className="md:w-1/2"></div>
-
-                <div
-                  className={`absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-gradient-to-r ${exp.color} border-4 border-white dark:border-gray-800 transform -translate-x-1/2 shadow-lg`}
-                ></div>
-
-                <div className="md:w-1/2 ml-16 md:ml-0">
-                  <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
-                    <div
-                      className={`inline-block px-4 py-1 bg-gradient-to-r ${exp.color} text-white rounded-full text-sm font-medium mb-4`}
-                    >
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4" />
-                        {exp.period}
-                      </div>
-                    </div>
-
-                    <h3 className="text-2xl font-bold mb-2 text-gray-800 dark:text-gray-200 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
-                      {exp.title}
-                    </h3>
-
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-4">
-                      <Briefcase className="w-5 h-5" />
-                      <span className="font-semibold">{exp.company}</span>
-                      <span>•</span>
-                      <span>{exp.location}</span>
-                    </div>
-
-                    <ul className="space-y-2">
-                      {exp.description.map((item, itemIndex) => (
-                        <li
-                          key={itemIndex}
-                          className="flex items-start gap-3 text-gray-600 dark:text-gray-400"
-                        >
-                          <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              <ExperienceCard key={index} exp={exp} index={index} />
             ))}
           </div>
         </div>

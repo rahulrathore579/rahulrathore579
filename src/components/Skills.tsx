@@ -1,4 +1,79 @@
 import { useState } from 'react';
+import { useInView } from '../hooks/useInView';
+
+const SkillCategoryCard = ({ category, index }: { category: any, index: number }) => {
+  const { ref, isInView } = useInView({ threshold: 0.2, triggerOnce: true });
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+
+  return (
+    <div
+      ref={ref}
+      className={`bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-700 transform ${
+        isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      }`}
+      style={{ transitionDelay: `${index * 150}ms` }}
+    >
+      <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200 flex items-center gap-3">
+        <span className="w-2 h-8 bg-gradient-to-b from-blue-600 to-purple-600 rounded-full"></span>
+        {category.category}
+      </h3>
+      <div className="space-y-6">
+        {category.skills.map((skill: any, skillIndex: number) => (
+          <div
+            key={skillIndex}
+            onMouseEnter={() => setHoveredSkill(`${index}-${skillIndex}`)}
+            onMouseLeave={() => setHoveredSkill(null)}
+            className="group"
+          >
+            <div className="flex justify-between items-center mb-2">
+              <span className="font-medium text-gray-700 dark:text-gray-300">
+                {skill.name}
+              </span>
+              <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+                {skill.level}%
+              </span>
+            </div>
+            <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden relative">
+              <div
+                className={`h-full bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transition-all duration-1000 ease-out relative ${
+                  hoveredSkill === `${index}-${skillIndex}` ? 'shadow-[0_0_15px_rgba(59,130,246,0.5)]' : ''
+                }`}
+                style={{
+                  width: isInView ? `${skill.level}%` : '0%'
+                }}
+              >
+                {hoveredSkill === `${index}-${skillIndex}` && (
+                  <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const TechBadge = ({ tech, index }: { tech: any, index: number }) => {
+  const { ref, isInView } = useInView({ threshold: 0.1, triggerOnce: true });
+  
+  return (
+    <div
+      ref={ref}
+      className={`bg-white dark:bg-gray-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-500 hover:scale-105 group transform ${
+        isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+      }`}
+      style={{ transitionDelay: `${index * 50}ms` }}
+    >
+      <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">
+        {tech.icon}
+      </div>
+      <p className="font-medium text-gray-700 dark:text-gray-300">
+        {tech.name}
+      </p>
+    </div>
+  );
+};
 
 export default function Skills() {
   const skillCategories = [
@@ -41,8 +116,6 @@ export default function Skills() {
     }
   ];
 
-  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
-
   return (
     <section
       id="skills"
@@ -60,49 +133,8 @@ export default function Skills() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {skillCategories.map((category, categoryIndex) => (
-            <div
-              key={categoryIndex}
-              className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
-            >
-              <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200 flex items-center gap-3">
-                <span className="w-2 h-8 bg-gradient-to-b from-blue-600 to-purple-600 rounded-full"></span>
-                {category.category}
-              </h3>
-              <div className="space-y-6">
-                {category.skills.map((skill, skillIndex) => (
-                  <div
-                    key={skillIndex}
-                    onMouseEnter={() => setHoveredSkill(`${categoryIndex}-${skillIndex}`)}
-                    onMouseLeave={() => setHoveredSkill(null)}
-                    className="group"
-                  >
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="font-medium text-gray-700 dark:text-gray-300">
-                        {skill.name}
-                      </span>
-                      <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden relative">
-                      <div
-                        className={`h-full bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transition-all duration-1000 ease-out relative ${
-                          hoveredSkill === `${categoryIndex}-${skillIndex}` ? 'shadow-[0_0_15px_rgba(59,130,246,0.5)]' : ''
-                        }`}
-                        style={{
-                          width: `${skill.level}%`
-                        }}
-                      >
-                        {hoveredSkill === `${categoryIndex}-${skillIndex}` && (
-                          <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {skillCategories.map((category, index) => (
+            <SkillCategoryCard key={index} category={category} index={index} />
           ))}
         </div>
 
@@ -120,17 +152,7 @@ export default function Skills() {
             { name: 'Cloud', icon: '☁️' },
             { name: 'Git', icon: '📦' }
           ].map((tech, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-gray-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 hover:scale-105 group"
-            >
-              <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">
-                {tech.icon}
-              </div>
-              <p className="font-medium text-gray-700 dark:text-gray-300">
-                {tech.name}
-              </p>
-            </div>
+            <TechBadge key={index} tech={tech} index={index} />
           ))}
         </div>
       </div>

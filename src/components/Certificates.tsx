@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Award, ExternalLink, Image as ImageIcon, X } from 'lucide-react';
+import { useInView } from '../hooks/useInView';
 
 interface ImageModalProps {
   images: string[];
@@ -32,6 +33,87 @@ const ImageModal = ({ images, isOpen, onClose }: ImageModalProps) => {
             </div>
           ))}
         </div>
+      </div>
+    </div>
+  );
+};
+// CertificateCard component that encapsulates the InView animation hook
+const CertificateCard = ({ cert, index, setModalData }: { cert: any, index: number, setModalData: (data: any) => void }) => {
+  const { ref, isInView } = useInView({ threshold: 0.15, triggerOnce: true });
+
+  return (
+    <div
+      ref={ref}
+      className={`group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-700 transform ${
+        isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
+      }`}
+      style={{ transitionDelay: `${index * 150}ms` }}
+    >
+      <div
+        className={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
+      ></div>
+
+      <div className="relative p-8 z-10">
+        {/* Icon & Date */}
+        <div className="flex items-start justify-between mb-6">
+          <div
+            className={`w-16 h-16 bg-gradient-to-br ${cert.color} rounded-xl flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg`}
+          >
+            {cert.icon}
+          </div>
+          <div
+            className={`px-4 py-2 bg-gradient-to-r ${cert.color} text-white rounded-full text-sm font-medium`}
+          >
+            {cert.date}
+          </div>
+        </div>
+
+        {/* Certificate Title & Issuer */}
+        <div className="mb-4">
+          <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+            {cert.title}
+          </h3>
+          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-3">
+            <Award className="w-5 h-5" />
+            <span className="font-semibold">{cert.issuer}</span>
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">
+          {cert.description}
+        </p>
+
+        {/* Link Buttons */}
+        <div className="flex flex-wrap gap-4 relative z-20">
+          <a
+            href={cert.link}
+            target={cert.link === '#' ? undefined : "_blank"}
+            rel="noopener noreferrer"
+            onClick={(e) => {
+              if (cert.link === '#') {
+                e.preventDefault();
+                alert('Certificate image/link coming soon!');
+              }
+            }}
+            className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium hover:gap-3 transition-all duration-300 cursor-pointer"
+          >
+            <span>View Certificate</span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
+
+          {cert.eventPictures && cert.eventPictures.length > 0 && (
+            <button
+              onClick={() => setModalData({ isOpen: true, images: cert.eventPictures! })}
+              className="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 font-medium hover:gap-3 transition-all duration-300"
+            >
+              <ImageIcon className="w-4 h-4" />
+              <span>Event Pictures</span>
+            </button>
+          )}
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
       </div>
     </div>
   );
@@ -142,77 +224,7 @@ export default function Certificates() {
         {/* Certificates Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {certificates.map((cert, index) => (
-            <div
-              key={index}
-              className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
-            >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
-              ></div>
-
-              <div className="relative p-8 z-10">
-                {/* Icon & Date */}
-                <div className="flex items-start justify-between mb-6">
-                  <div
-                    className={`w-16 h-16 bg-gradient-to-br ${cert.color} rounded-xl flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg`}
-                  >
-                    {cert.icon}
-                  </div>
-                  <div
-                    className={`px-4 py-2 bg-gradient-to-r ${cert.color} text-white rounded-full text-sm font-medium`}
-                  >
-                    {cert.date}
-                  </div>
-                </div>
-
-                {/* Certificate Title & Issuer */}
-                <div className="mb-4">
-                  <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
-                    {cert.title}
-                  </h3>
-                  <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-3">
-                    <Award className="w-5 h-5" />
-                    <span className="font-semibold">{cert.issuer}</span>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">
-                  {cert.description}
-                </p>
-
-                {/* Link Buttons */}
-                <div className="flex flex-wrap gap-4 relative z-20">
-                  <a
-                    href={cert.link}
-                    target={cert.link === '#' ? undefined : "_blank"}
-                    rel="noopener noreferrer"
-                    onClick={(e) => {
-                      if (cert.link === '#') {
-                        e.preventDefault();
-                        alert('Certificate image/link coming soon!');
-                      }
-                    }}
-                    className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium hover:gap-3 transition-all duration-300 cursor-pointer"
-                  >
-                    <span>View Certificate</span>
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-
-                  {cert.eventPictures && cert.eventPictures.length > 0 && (
-                    <button
-                      onClick={() => setModalData({ isOpen: true, images: cert.eventPictures! })}
-                      className="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 font-medium hover:gap-3 transition-all duration-300"
-                    >
-                      <ImageIcon className="w-4 h-4" />
-                      <span>Event Pictures</span>
-                    </button>
-                  )}
-                </div>
-
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-              </div>
-            </div>
+            <CertificateCard key={index} cert={cert} index={index} setModalData={setModalData} />
           ))}
         </div>
 

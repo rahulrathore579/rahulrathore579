@@ -1,4 +1,31 @@
 import { Code2, Database, Brain, Globe } from 'lucide-react';
+import { useInView } from '../hooks/useInView';
+import aboutBg from '../assets/about.png';
+
+const HighlightCard = ({ item, index }: { item: any, index: number }) => {
+  const { ref, isInView } = useInView({ threshold: 0.2, triggerOnce: true });
+  const Icon = item.icon;
+
+  return (
+    <div
+      ref={ref}
+      className={`p-6 bg-transparent border border-gray-200/20 dark:border-white/10 rounded-xl hover:bg-white/5 dark:hover:bg-white/5 transition-all duration-700 hover:scale-105 group transform ${
+        isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
+      }`}
+      style={{ transitionDelay: `${index * 150}ms` }}
+    >
+      <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform duration-300">
+        <Icon className="w-6 h-6 text-white" />
+      </div>
+      <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">
+        {item.title}
+      </h3>
+      <p className="text-sm text-gray-600 dark:text-gray-400">
+        {item.description}
+      </p>
+    </div>
+  );
+};
 
 export default function About() {
   const highlights = [
@@ -24,12 +51,18 @@ export default function About() {
     }
   ];
 
+  const { ref: textRef, isInView: isTextInView } = useInView({ threshold: 0.2, triggerOnce: true });
+
   return (
     <section
       id="about"
-      className="py-20 px-4 bg-white dark:bg-gray-900 scroll-reveal"
+      className="py-20 px-4 relative bg-cover bg-center bg-fixed scroll-reveal"
+      style={{ backgroundImage: `url(${aboutBg})` }}
     >
-      <div className="container mx-auto max-w-6xl">
+      {/* Overlay to ensure text visibility while keeping the background clear */}
+      <div className="absolute inset-0 bg-white/50 dark:bg-gray-900/70 z-0 transition-colors duration-500"></div>
+
+      <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             About Me
@@ -38,7 +71,12 @@ export default function About() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+          <div 
+            ref={textRef}
+            className={`space-y-6 transition-all duration-1000 transform ${
+              isTextInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
+            }`}
+          >
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
               I'm a passionate Computer Science student specializing in cutting-edge
               technologies including Artificial Intelligence, Machine Learning, Internet
@@ -77,25 +115,9 @@ export default function About() {
           </div>
 
           <div className="grid grid-cols-2 gap-6">
-            {highlights.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={index}
-                  className="p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 group"
-                >
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform duration-300">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {item.description}
-                  </p>
-                </div>
-              );
-            })}
+            {highlights.map((item, index) => (
+              <HighlightCard key={index} item={item} index={index} />
+            ))}
           </div>
         </div>
       </div>

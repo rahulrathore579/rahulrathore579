@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { ExternalLink, Github, X, ImageIcon } from 'lucide-react';
 import fluenzyaiImg from '../assets/projects/fluenzyai.png';
 import zapkartImg from '../assets/projects/zapkart.png';
@@ -6,6 +6,7 @@ import aiSmartClassroomImg from '../assets/projects/image1copy.png';
 import healthcareImg from '../assets/projects/image3copy.png';
 import productRecogImg from '../assets/projects/imagecopy2.png';
 import dataDashboardImg from '../assets/projects/imagecopy3.png';
+import { useInView } from '../hooks/useInView';
 
 interface ProjectModalProps {
   project: {
@@ -209,38 +210,17 @@ export default function Projects() {
     }
   ];
 
-  // Hook to detect when elements are in viewport
-  const useInView = (options: IntersectionObserverInit = {}) => {
-    const [isInView, setIsInView] = useState(false);
-    const ref = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-      const observer = new IntersectionObserver(([entry]) => {
-        setIsInView(entry.isIntersecting);
-      }, { threshold: 0.5, ...options });
-
-      if (ref.current) {
-        observer.observe(ref.current);
-      }
-
-      return () => {
-        if (ref.current) observer.unobserve(ref.current);
-      };
-    }, [options]);
-
-    return { ref, isInView };
-  };
-
   // Wrapper component for individual project cards to handle their own intersection state
   const ProjectCard = ({ project, index, onClick }: { project: any, index: number, onClick: () => void }) => {
-    const { ref, isInView } = useInView({ threshold: 0.4 });
+    const { ref, isInView } = useInView({ threshold: 0.1, triggerOnce: true });
     const isActive = isInView; // It's active if hovering OR if in view (on mobile)
 
     return (
       <div
         ref={ref}
-        className={`group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-700 cursor-pointer border border-gray-200/50 dark:border-gray-700/50 h-[380px] sm:h-[420px] flex flex-col justify-end transform ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-50 md:opacity-100 md:translate-y-0'} md:hover:-translate-y-2`}
+        className={`group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-700 cursor-pointer border border-gray-200/50 dark:border-gray-700/50 h-[380px] sm:h-[420px] flex flex-col justify-end transform ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0 md:opacity-100 md:translate-y-0'} md:hover:-translate-y-2`}
         onClick={onClick}
+        style={{ transitionDelay: `${index * 150}ms` }}
       >
         {/* Full Background Image */}
         <div 
