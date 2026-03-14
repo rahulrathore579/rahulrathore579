@@ -2,7 +2,7 @@
 
 💻 Full-Stack Developer | 🤖 AI & GenAI Enthusiast | 🎙️ Voice AI Builder  
 
-🌐 Portfolio: https://rahulrathore579.onrender.com
+🌐 Portfolio: https://rahulrathore579.vercel.app
 
 I build **AI-powered applications**, **voice-based systems**, and **scalable web platforms** with a focus on clean design and real-world impact.
 
