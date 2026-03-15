@@ -2,7 +2,11 @@
 
 Welcome to the official repository and brand documentation for **Rahul Rathore** (rahulrathore579).
 
+<<<<<<< HEAD
 ## Personal Brand Descriptions
+=======
+🌐 Portfolio: https://rahulrathore579.vercel.app
+>>>>>>> f4db25de65d99647b100752936a273bfad9bf52e
 
 ### 2-Line Bio
 I'm Rahul Rathore, an AI & ML Developer and the Founder of Fluenzy AI. I specialize in building intelligent systems, IoT solutions, and modern web applications that solve real-world problems.
