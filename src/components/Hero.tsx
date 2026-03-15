@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Phone, Download, MessageCircle, Instagram } from 'lucide-react';
-import profileImage from '../assets/meri_photo.png';
+import profileImage from '../assets/rahul-rathore.png';
 import heroBgImage from '../assets/image7copy.png';
 
 export default function Hero() {
@@ -160,7 +160,8 @@ export default function Hero() {
               <div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center">
                 <img
                   src={profileImage}
-                  alt="Profile"
+                  alt="Rahul Rathore - AI Developer, ML Developer & Founder of Fluenzy AI"
+                  title="Rahul Rathore Profile"
                   className="w-full h-full object-cover"
                 />
               </div>

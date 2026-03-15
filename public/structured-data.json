@@ -5,7 +5,7 @@
   "alternateName": ["rahul", "rahulrathore579"],
   "url": "https://rahulrathore579.vercel.app/",
   "email": "rahulrathore39769@gmail.com",
-  "image": "https://rahulrathore579.vercel.app/images.jpeg",
+  "image": "https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg",
   "sameAs": [
     "https://github.com/rahulrathore579",
     "https://linkedin.com/in/rahulrathore39769",
@@ -36,9 +36,5 @@
       "name": "Zapkart Smart Cart",
       "description": "IoT-enabled cart system using OpenCV for product recognition, weight sensors for automatic billing, and real-time inventory management."
     }
-  ],
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "GLA University"
-  }
+  ]
 }
