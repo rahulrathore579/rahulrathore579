@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Send, Instagram, Sparkles, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Send, Instagram, Sparkles, CheckCircle, AlertCircle, Twitter, Briefcase } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
 import emailjs from '@emailjs/browser';
 
@@ -88,7 +88,9 @@ export default function Contact() {
     { icon: Phone,     label: 'Phone',     value: '+91 7505238914',                          href: 'tel:+917505238914',                                  color: 'from-green-500 to-teal-500' },
     { icon: Github,    label: 'GitHub',    value: 'rahulrathore579',                         href: 'https://github.com/rahulrathore579',                 color: 'from-gray-500 to-gray-700' },
     { icon: Linkedin,  label: 'LinkedIn',  value: 'rahulrathore39769',                       href: 'https://linkedin.com/in/rahulrathore39769',          color: 'from-blue-600 to-blue-800' },
-    { icon: Instagram, label: 'Instagram', value: 'rahulrathore579',                         href: 'https://instagram.com/rahulrathore579',              color: 'from-pink-500 to-purple-600' }
+    { icon: Instagram, label: 'Instagram', value: 'rahulrathore579',                         href: 'https://instagram.com/rahulrathore579',              color: 'from-pink-500 to-purple-600' },
+    { icon: Twitter,   label: 'Twitter',   value: 'rahulrathore579',                         href: 'https://twitter.com/rahulrathore579',                color: 'from-sky-400 to-blue-500' },
+    { icon: Briefcase, label: 'Freelancer',value: 'rahulrathore579',                         href: 'https://www.freelancer.com/u/rahulrathore579',       color: 'from-blue-400 to-cyan-500' }
   ];
 
   return (

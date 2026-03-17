@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Phone, Download, MessageCircle, Instagram } from 'lucide-react';
+import { Github, Linkedin, Mail, Download, MessageCircle, Twitter, Briefcase } from 'lucide-react';
 import profileImage from '../assets/rahul-rathore.png';
 import heroBgImage from '../assets/image7copy.png';
 
@@ -135,20 +135,22 @@ export default function Hero() {
               <Mail className="w-6 h-6" />
             </a>
             <a
-              href="https://instagram.com/rahulrathore579"
+              href="https://twitter.com/rahulrathore579"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-pink-100 dark:hover:bg-pink-900/30 text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110"
-              aria-label="Instagram"
+              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-sky-100 dark:hover:bg-sky-900/30 text-gray-700 dark:text-gray-300 hover:text-sky-500 dark:hover:text-sky-400 transition-all duration-300 hover:scale-110"
+              aria-label="Twitter"
             >
-              <Instagram className="w-6 h-6" />
+              <Twitter className="w-6 h-6" />
             </a>
             <a
-              href="tel:+917505238914"
-              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110"
-              aria-label="Phone"
+              href="https://www.freelancer.com/u/rahulrathore579"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-cyan-100 dark:hover:bg-cyan-900/30 text-gray-700 dark:text-gray-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-all duration-300 hover:scale-110"
+              aria-label="Freelancer"
             >
-              <Phone className="w-6 h-6" />
+              <Briefcase className="w-6 h-6" />
             </a>
           </div>
         </div>

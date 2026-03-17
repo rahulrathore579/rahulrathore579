@@ -9,7 +9,7 @@ const HighlightCard = ({ item, index }: { item: any, index: number }) => {
   return (
     <div
       ref={ref}
-      className={`p-6 bg-transparent border border-gray-200/20 dark:border-white/10 rounded-xl hover:bg-white/5 dark:hover:bg-white/5 transition-all duration-700 hover:scale-105 group transform ${
+      className={`p-6 bg-transparent backdrop-blur-sm border border-white/20 dark:border-white/10 rounded-xl hover:bg-white/5 dark:hover:bg-white/5 transition-all duration-700 hover:scale-105 group transform ${
         isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
@@ -20,7 +20,7 @@ const HighlightCard = ({ item, index }: { item: any, index: number }) => {
       <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">
         {item.title}
       </h3>
-      <p className="text-sm text-gray-600 dark:text-gray-400">
+      <p className="text-sm text-gray-700 dark:text-gray-300">
         {item.description}
       </p>
     </div>
@@ -60,14 +60,14 @@ export default function About() {
       style={{ backgroundImage: `url(${aboutBg})` }}
     >
       {/* Overlay to ensure text visibility while keeping the background clear */}
-      <div className="absolute inset-0 bg-white/50 dark:bg-gray-900/70 z-0 transition-colors duration-500"></div>
+      <div className="absolute inset-0 bg-white/20 dark:bg-gray-950/40 z-0 transition-colors duration-500"></div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent drop-shadow-sm">
             About Me
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full shadow-lg"></div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -77,35 +77,35 @@ export default function About() {
               isTextInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
             }`}
           >
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-lg text-gray-800 dark:text-gray-100 font-medium leading-relaxed drop-shadow-sm">
               I'm a passionate Computer Science student specializing in cutting-edge
               technologies including Artificial Intelligence, Machine Learning, Internet
               of Things, and modern Web Development.
             </p>
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-lg text-gray-800 dark:text-gray-100 font-medium leading-relaxed drop-shadow-sm">
               My expertise lies in developing intelligent systems that solve real-world
               problems. From building AI-powered applications to creating IoT solutions
               and analyzing complex datasets, I thrive on turning innovative ideas into
               practical implementations.
             </p>
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-lg text-gray-800 dark:text-gray-100 font-medium leading-relaxed drop-shadow-sm">
               I believe in continuous learning and staying updated with the latest
               technological advancements. My goal is to leverage technology to create
               meaningful impact and drive digital transformation.
             </p>
 
             <div className="pt-4">
-              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white drop-shadow-sm">
                 Education
               </h3>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
+                  <div className="w-3 h-3 bg-blue-600 rounded-full mt-2 shadow-lg"></div>
                   <div>
-                    <p className="font-semibold text-gray-800 dark:text-gray-200">
+                    <p className="font-bold text-gray-900 dark:text-white drop-shadow-sm">
                       Bachelor of Technology in Computer Science
                     </p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">
+                    <p className="text-gray-700 dark:text-gray-300 font-medium text-sm drop-shadow-sm">
                       Specialization: AI, ML, IoT, and Data Science
                     </p>
                   </div>

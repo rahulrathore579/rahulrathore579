@@ -56,9 +56,13 @@ const CertificateCard = ({ cert, index, setModalData }: { cert: any, index: numb
       <div className="relative p-8 z-10">
         <div className="flex items-start justify-between mb-6">
           <div
-            className={`w-16 h-16 bg-gradient-to-br ${cert.color} rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}
+            className={`w-16 h-16 bg-gradient-to-br ${cert.color} rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg relative overflow-hidden`}
           >
-            {cert.icon}
+            {/* Geometric Pattern Overlay */}
+            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.8),transparent_70%)] blur-sm"></div>
+            <span className="text-white text-2xl font-black italic tracking-tighter relative z-10 select-none">
+              {(index + 1).toString().padStart(2, '0')}
+            </span>
           </div>
           <div className={`px-4 py-2 bg-gradient-to-r ${cert.color} text-white rounded-full text-sm font-semibold shadow-md`}>
             {cert.date}
@@ -66,10 +70,13 @@ const CertificateCard = ({ cert, index, setModalData }: { cert: any, index: numb
         </div>
 
         <div className="mb-4">
-          <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
-            {cert.title}
-          </h3>
-          <div className="flex items-center gap-2 text-gray-500 dark:text-gray-500 mb-3">
+          <div className="flex items-center gap-2 mb-2">
+            <div className={`w-2 h-2 bg-gradient-to-br ${cert.color} rounded-full`}></div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
+              {cert.title}
+            </h3>
+          </div>
+          <div className="flex items-center gap-2 text-gray-500 dark:text-gray-500 mb-3 ml-4">
             <Award className="w-4 h-4" />
             <span className="font-semibold text-gray-600 dark:text-gray-400">{cert.issuer}</span>
           </div>
@@ -124,7 +131,6 @@ export default function Certificates() {
       description:
         "Winner of AI Nirman 2026 competition, showcasing FluenzyAI, Technavya'26 PROJ-E-X. Demonstrated innovation in AI-powered communication solutions.",
       color: 'from-yellow-500 to-orange-500',
-      icon: '🏆',
       link: 'public/certificate/ainirman.jpeg',
       eventPictures: [
         'assets/certificate/ainirman/ainirman.jpeg',
@@ -140,7 +146,6 @@ export default function Certificates() {
       description:
         'Participated in Smart India Hackathon 2024, gaining hands-on experience in innovation, teamwork, and rapid solution development.',
       color: 'from-blue-500 to-cyan-500',
-      icon: '🐍',
       link: 'https://www.linkedin.com/posts/varun-gupta-3a1315289_smartindiahackathon-sih2025-innovation-ugcPost-7389542807629291521-x_SG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEPIK78BIkLspWBpwRyHI3r1wu_5uG8lfKo',
       eventPictures: [
         'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop',
@@ -154,7 +159,6 @@ export default function Certificates() {
       description:
         'Comprehensive Python programming certification covering core concepts, data structures, and application development',
       color: 'from-blue-500 to-cyan-500',
-      icon: '🐍',
       link: 'https://www.linkedin.com/posts/rahulrathore39769_pythonprogramming-activity-7157801199692312576-ruyX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEPIK78BIkLspWBpwRyHI3r1wu_5uG8lfKo',
       eventPictures: []
     },
@@ -165,7 +169,6 @@ export default function Certificates() {
       description:
         'Intensive data analytics program focusing on statistical analysis, data visualization, and business intelligence',
       color: 'from-purple-500 to-pink-500',
-      icon: '📊',
       link: 'https://example.com/data-analytics',
       eventPictures: []
     },
@@ -176,7 +179,6 @@ export default function Certificates() {
       description:
         'Advanced Power BI certification with expertise in DAX formulas and AI-powered analytics for data-driven insights',
       color: 'from-green-500 to-teal-500',
-      icon: '📈',
       link: 'https://www.linkedin.com/posts/rahulrathore39769_innovation-iot-healthcarerevolution-activity-7154817006557437952-p4nD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEPIK78BIkLspWBpwRyHI3r1wu_5uG8lfKo',
       eventPictures: []
     },
@@ -187,7 +189,6 @@ export default function Certificates() {
       description:
         'Foundational machine learning concepts including supervised and unsupervised learning algorithms',
       color: 'from-orange-500 to-red-500',
-      icon: '🤖',
       link: 'https://example.com/machine-learning',
       eventPictures: []
     }
