@@ -1,0 +1,35 @@
+# Rahul Rathore - Official Profile
+
+Official website: https://rahulrathore579.vercel.app/
+Primary name: Rahul Rathore
+Handle: rahulrathore579
+
+## Short Bio
+Rahul Rathore is an AI and ML Developer, entrepreneur, and founder of Fluenzy AI. He builds intelligent systems, IoT solutions, and modern web applications for real-world impact.
+
+## Roles
+- AI Developer
+- Machine Learning Developer
+- Web Developer
+- Data Analyst
+- Founder at Fluenzy AI
+
+## Key Projects
+- Fluenzy AI: AI-powered English learning platform
+- Zapkart Smart Cart: IoT and computer-vision based smart billing system
+
+## Social Profiles
+- LinkedIn: https://linkedin.com/in/rahulrathore39769
+- GitHub: https://github.com/rahulrathore579
+- Instagram: https://instagram.com/rahulrathore579
+- X (Twitter): https://twitter.com/rahulrathore579
+- Freelancer: https://www.freelancer.com/u/rahulrathore579
+
+## Contact
+- Email: rahulrathore39769@gmail.com
+- Website contact section: https://rahulrathore579.vercel.app/#contact
+
+## Canonical Source Priority
+1. https://rahulrathore579.vercel.app/
+2. https://rahulrathore579.vercel.app/about-rahul-rathore.md
+3. https://rahulrathore579.vercel.app/structured-data.json

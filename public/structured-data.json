@@ -1,40 +1,59 @@
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Rahul Rathore",
-  "alternateName": ["rahul", "rahulrathore579"],
-  "url": "https://rahulrathore579.vercel.app/",
-  "email": "rahulrathore39769@gmail.com",
-  "image": "https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg",
-  "sameAs": [
-    "https://github.com/rahulrathore579",
-    "https://linkedin.com/in/rahulrathore39769",
-    "https://instagram.com/rahulrathore579"
-  ],
-  "jobTitle": ["AI Developer", "ML Developer", "Web Developer", "Data Analyst", "Entrepreneur"],
-  "worksFor": [
+  "@graph": [
     {
-      "@type": "Organization",
-      "name": "Fluenzy AI",
-      "roleName": "Founder"
-    }
-  ],
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "GLA University"
-  },
-  "description": "Founder of Fluenzy AI & Creator of Zapkart Smart Cart. Computer Science student specializing in AI, Machine Learning, IoT, Web Development, and Data Analysis.",
-  "knowsAbout": ["Artificial Intelligence", "Machine Learning", "Internet of Things (IoT)", "Web Development", "Data Analysis", "Python", "React", "Next.js", "OpenCV"],
-  "makesOffer": [
-    {
-      "@type": "Offer",
-      "name": "Fluenzy AI",
-      "description": "An AI-powered English learning platform improving communication skills and placement readiness through personalized AI tutoring and real-time feedback."
+      "@type": "Person",
+      "@id": "https://rahulrathore579.vercel.app/#person",
+      "name": "Rahul Rathore",
+      "alternateName": ["rahul", "rahulrathore579"],
+      "url": "https://rahulrathore579.vercel.app/",
+      "email": "rahulrathore39769@gmail.com",
+      "image": "https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg",
+      "sameAs": [
+        "https://github.com/rahulrathore579",
+        "https://linkedin.com/in/rahulrathore39769",
+        "https://instagram.com/rahulrathore579",
+        "https://twitter.com/rahulrathore579",
+        "https://www.freelancer.com/u/rahulrathore579"
+      ],
+      "jobTitle": ["AI Developer", "ML Developer", "Web Developer", "Data Analyst", "Entrepreneur"],
+      "worksFor": {
+        "@id": "https://rahulrathore579.vercel.app/#organization"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "GLA University"
+      },
+      "description": "Founder of Fluenzy AI and creator of Zapkart Smart Cart. AI and ML developer specializing in intelligent systems, IoT, web development, and data analysis.",
+      "knowsAbout": ["Artificial Intelligence", "Machine Learning", "Internet of Things (IoT)", "Web Development", "Data Analysis", "Python", "React", "Next.js", "OpenCV"]
     },
     {
-      "@type": "Offer",
-      "name": "Zapkart Smart Cart",
-      "description": "IoT-enabled cart system using OpenCV for product recognition, weight sensors for automatic billing, and real-time inventory management."
+      "@type": "Organization",
+      "@id": "https://rahulrathore579.vercel.app/#organization",
+      "name": "Fluenzy AI",
+      "founder": {
+        "@id": "https://rahulrathore579.vercel.app/#person"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://rahulrathore579.vercel.app/#website",
+      "url": "https://rahulrathore579.vercel.app/",
+      "name": "Rahul Rathore Portfolio",
+      "publisher": {
+        "@id": "https://rahulrathore579.vercel.app/#person"
+      }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://rahulrathore579.vercel.app/#profile",
+      "url": "https://rahulrathore579.vercel.app/",
+      "mainEntity": {
+        "@id": "https://rahulrathore579.vercel.app/#person"
+      },
+      "about": {
+        "@id": "https://rahulrathore579.vercel.app/#person"
+      }
     }
   ]
 }
