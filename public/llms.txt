@@ -33,3 +33,4 @@ Rahul Rathore is an AI and ML Developer, entrepreneur, and founder of Fluenzy AI
 1. https://rahulrathore579.vercel.app/
 2. https://rahulrathore579.vercel.app/about-rahul-rathore.md
 3. https://rahulrathore579.vercel.app/structured-data.json
+4. https://rahulrathore579.vercel.app/faq-rahul-rathore.md
