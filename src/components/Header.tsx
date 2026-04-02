@@ -81,6 +81,36 @@ export default function Header() {
                 {item.label}
               </button>
             ))}
+            <a
+              href="/about"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+            >
+              About Page
+            </a>
+            <a
+              href="/faq"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+            >
+              FAQ Page
+            </a>
+            <a
+              href="/projects"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+            >
+              Projects Page
+            </a>
+            <a
+              href="/contact"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+            >
+              Contact Page
+            </a>
+            <a
+              href="/press"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+            >
+              Press Page
+            </a>
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -131,6 +161,41 @@ export default function Header() {
                   {item.label}
                 </button>
               ))}
+              <a
+                href="/about"
+                className="text-left px-4 py-2 rounded-lg transition-colors text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About Page
+              </a>
+              <a
+                href="/faq"
+                className="text-left px-4 py-2 rounded-lg transition-colors text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                FAQ Page
+              </a>
+              <a
+                href="/projects"
+                className="text-left px-4 py-2 rounded-lg transition-colors text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Projects Page
+              </a>
+              <a
+                href="/contact"
+                className="text-left px-4 py-2 rounded-lg transition-colors text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact Page
+              </a>
+              <a
+                href="/press"
+                className="text-left px-4 py-2 rounded-lg transition-colors text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Press Page
+              </a>
             </div>
           </div>
         )}
