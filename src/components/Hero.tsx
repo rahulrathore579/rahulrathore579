@@ -10,9 +10,9 @@ export default function Hero() {
   const [typingSpeed, setTypingSpeed] = useState(150);
 
   const roles = [
+    'AI & ML Developer',
     'Co-Founder of Fluenzy AI',
     'Full-Stack Developer',
-    'AI & ML Developer',
     'IoT Developer',
     'Data Analyst'
   ];
@@ -83,7 +83,7 @@ export default function Hero() {
           </div>
 
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl">
-            Co-Founder of <span className="font-semibold text-blue-600 dark:text-blue-400">Fluenzy AI</span> & Full-Stack Developer building intelligent, real-world products — from AI-powered platforms to IoT systems and scalable web applications.
+            <span className="font-semibold text-blue-600 dark:text-blue-400">AI & ML Developer</span> & Co-Founder of Fluenzy AI — building intelligent systems, deep learning models, and AI-powered products that solve real-world problems.
           </p>
 
           <div className="flex flex-wrap gap-4">

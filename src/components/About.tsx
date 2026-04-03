@@ -31,18 +31,18 @@ export default function About() {
   const highlights = [
     {
       icon: Brain,
-      title: 'Fluenzy AI',
-      description: 'Co-Founder building an AI-powered language learning & communication platform'
+      title: 'AI & ML',
+      description: 'Deep learning, computer vision, NLP & intelligent systems'
     },
     {
       icon: Code2,
-      title: 'Full-Stack Dev',
-      description: 'React, Node.js, Python — end-to-end product development'
+      title: 'Fluenzy AI',
+      description: 'Co-Founder — AI-powered language learning & communication platform'
     },
     {
       icon: Globe,
-      title: 'AI & ML',
-      description: 'Deep learning, computer vision & intelligent systems'
+      title: 'Full-Stack Dev',
+      description: 'React, Python, Node.js — end-to-end product development'
     },
     {
       icon: Database,
@@ -78,17 +78,17 @@ export default function About() {
             }`}
           >
             <p className="text-lg text-gray-800 dark:text-gray-100 font-medium leading-relaxed drop-shadow-sm">
-              I'm a <strong>Full-Stack Developer</strong> and <strong>Co-Founder of Fluenzy AI</strong> — an AI-powered platform
-              redefining how people learn and communicate languages. I build end-to-end products from concept to deployment,
-              combining software engineering with artificial intelligence.
+              I'm an <strong>AI & ML Developer</strong> and Co-Founder of <strong>Fluenzy AI</strong> — an AI-powered platform
+              redefining how people learn and communicate languages. I specialize in building intelligent systems
+              using deep learning, computer vision, and NLP.
             </p>
             <p className="text-lg text-gray-800 dark:text-gray-100 font-medium leading-relaxed drop-shadow-sm">
-              My stack spans React, Python, Node.js, and AI/ML frameworks — and I apply them to real problems:
-              from smart IoT systems like Zapkart Smart Cart to intelligent web applications used by real users.
+              My expertise spans Python, TensorFlow, PyTorch, OpenCV, and modern web stacks — applied to
+              real-world products like Zapkart Smart Cart and AI-driven web applications used by real users.
             </p>
             <p className="text-lg text-gray-800 dark:text-gray-100 font-medium leading-relaxed drop-shadow-sm">
-              As a CS student at GLA University specializing in AI, ML & IoT, I focus on shipping production-ready
-              solutions that create measurable impact, not just proof-of-concepts.
+              As a CS student at GLA University (AI, ML & IoT specialization), I focus on shipping production-ready
+              AI solutions that create measurable impact, not just proof-of-concepts.
             </p>
 
             <div className="pt-4">
