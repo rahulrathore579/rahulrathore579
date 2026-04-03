@@ -31,23 +31,23 @@ export default function About() {
   const highlights = [
     {
       icon: Brain,
-      title: 'AI & ML',
-      description: 'Deep learning, computer vision, and intelligent systems'
+      title: 'Fluenzy AI',
+      description: 'Co-Founder building an AI-powered language learning & communication platform'
     },
     {
       icon: Code2,
-      title: 'IoT Solutions',
-      description: 'Smart devices and sensor-based applications'
+      title: 'Full-Stack Dev',
+      description: 'React, Node.js, Python — end-to-end product development'
     },
     {
       icon: Globe,
-      title: 'Web Development',
-      description: 'Modern, responsive full-stack applications'
+      title: 'AI & ML',
+      description: 'Deep learning, computer vision & intelligent systems'
     },
     {
       icon: Database,
-      title: 'Data Analysis',
-      description: 'Insights through Power BI and analytics'
+      title: 'IoT & Data',
+      description: 'Smart devices, sensor systems & data analytics'
     }
   ];
 
@@ -78,20 +78,17 @@ export default function About() {
             }`}
           >
             <p className="text-lg text-gray-800 dark:text-gray-100 font-medium leading-relaxed drop-shadow-sm">
-              I'm a passionate Computer Science student specializing in cutting-edge
-              technologies including Artificial Intelligence, Machine Learning, Internet
-              of Things, and modern Web Development.
+              I'm a <strong>Full-Stack Developer</strong> and <strong>Co-Founder of Fluenzy AI</strong> — an AI-powered platform
+              redefining how people learn and communicate languages. I build end-to-end products from concept to deployment,
+              combining software engineering with artificial intelligence.
             </p>
             <p className="text-lg text-gray-800 dark:text-gray-100 font-medium leading-relaxed drop-shadow-sm">
-              My expertise lies in developing intelligent systems that solve real-world
-              problems. From building AI-powered applications to creating IoT solutions
-              and analyzing complex datasets, I thrive on turning innovative ideas into
-              practical implementations.
+              My stack spans React, Python, Node.js, and AI/ML frameworks — and I apply them to real problems:
+              from smart IoT systems like Zapkart Smart Cart to intelligent web applications used by real users.
             </p>
             <p className="text-lg text-gray-800 dark:text-gray-100 font-medium leading-relaxed drop-shadow-sm">
-              I believe in continuous learning and staying updated with the latest
-              technological advancements. My goal is to leverage technology to create
-              meaningful impact and drive digital transformation.
+              As a CS student at GLA University specializing in AI, ML & IoT, I focus on shipping production-ready
+              solutions that create measurable impact, not just proof-of-concepts.
             </p>
 
             <div className="pt-4">
