@@ -1,4 +1,3 @@
-# Rahul Rathore - Portfolio
 # 👋 Hi, I'm Rahul Rathore  
 
 🚀 **AI/ML Engineer | Generative AI Developer | Full Stack Developer**  
