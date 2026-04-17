@@ -146,10 +146,11 @@ If you like my work, consider giving a ⭐ to my repositories!
 
 ---
 
-## 💬 Quote  
-
-> "Building intelligent systems that make life smarter, faster, and better."
 ## Discover More
 - **Portfolio**: [rahulrathore579.vercel.app](https://rahulrathore579.vercel.app)
 - **LinkedIn**: [Rahul Rathore](https://linkedin.com/in/rahulrathore39769)
 - **GitHub**: [rahulrathore579](https://github.com/rahulrathore579)
+
+## 💬 Quote  
+
+> "Building intelligent systems that make life smarter, faster, and better."
