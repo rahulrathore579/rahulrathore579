@@ -1,39 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://rahulrathore579.vercel.app/</loc>
 <lastmod>2026-04-18</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1.0</priority>
-<image:image>
-<image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
-<image:title>Rahul Rathore AI/ML Generative AI Developer</image:title>
-<image:caption>Profile photo of Rahul Rathore, AI/ML and Generative AI Full-Stack Developer from Agra, India</image:caption>
-</image:image>
 </url>
 <url>
 <loc>https://rahulrathore579.vercel.app/about</loc>
 <lastmod>2026-04-18</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.95</priority>
-<image:image>
-<image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
-<image:title>Rahul Rathore Profile Picture</image:title>
-</image:image>
 </url>
 <url>
 <loc>https://rahulrathore579.vercel.app/projects</loc>
 <lastmod>2026-04-18</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
-<image:image>
-<image:loc>https://rahulrathore579.vercel.app/projects/fluenzyai.png</image:loc>
-<image:title>Fluenzy AI LLM Platform</image:title>
-</image:image>
-<image:image>
-<image:loc>https://rahulrathore579.vercel.app/projects/zapkart.png</image:loc>
-<image:title>Zapkart Smart Cart</image:title>
-</image:image>
 </url>
 <url>
 <loc>https://rahulrathore579.vercel.app/faq</loc>
