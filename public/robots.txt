@@ -15,4 +15,24 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+# Pinterest & Social Media Crawlers
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: ia_archiver
+Allow: /
+
+# Image search optimization
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemaps
 Sitemap: https://rahulrathore579.vercel.app/sitemap.xml
+Sitemap: https://rahulrathore579.vercel.app/image-sitemap.xml
+
+# Crawl delay to prevent overloading
+Crawl-delay: 1
+

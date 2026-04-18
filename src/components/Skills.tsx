@@ -77,40 +77,39 @@ const TechBadge = ({ tech, index }: { tech: any, index: number }) => {
 export default function Skills() {
   const skillCategories = [
     {
-      category: 'Languages',
+      category: 'AI & Generative AI',
       skills: [
-        { name: 'Python', level: 90 },
-        { name: 'SQL', level: 85 },
-        { name: 'Java', level: 80 },
-        { name: 'JavaScript', level: 85 }
+        { name: 'Large Language Models (LLMs)', level: 88 },
+        { name: 'Prompt Engineering', level: 85 },
+        { name: 'RAG & Vector Databases', level: 82 },
+        { name: 'Fine-tuning & Quantization', level: 80 }
       ]
     },
     {
-      category: 'Frameworks & Libraries',
+      category: 'Deep Learning & ML',
       skills: [
-        { name: 'Gen AI', level: 85 },
-        { name: 'LangChain', level: 80 },
-        { name: 'Flask', level: 85 },
-        { name: 'React', level: 80 },
-        { name: 'TensorFlow', level: 85 }
+        { name: 'Deep Learning', level: 88 },
+        { name: 'Computer Vision', level: 85 },
+        { name: 'NLP & Transformers', level: 85 },
+        { name: 'TensorFlow & PyTorch', level: 88 }
       ]
     },
     {
-      category: 'Tools & Technologies',
+      category: 'Full-Stack Development',
       skills: [
-        { name: 'Power BI', level: 90 },
-        { name: 'Tableau', level: 85 },
-        { name: 'MySQL', level: 85 },
-        { name: 'Excel', level: 88 }
+        { name: 'Python & FastAPI', level: 90 },
+        { name: 'React & Next.js', level: 85 },
+        { name: 'TypeScript', level: 82 },
+        { name: 'Database Design & SQL', level: 85 }
       ]
     },
     {
-      category: 'Soft Skills',
+      category: 'AI/ML Tools & APIs',
       skills: [
-        { name: 'Teamwork', level: 95 },
-        { name: 'Communication', level: 90 },
-        { name: 'Leadership', level: 88 },
-        { name: 'Problem Solving', level: 92 }
+        { name: 'OpenAI APIs & GPT Models', level: 88 },
+        { name: 'LangChain', level: 85 },
+        { name: 'Hugging Face', level: 82 },
+        { name: 'Anthropic Claude API', level: 78 }
       ]
     }
   ];
@@ -133,8 +132,8 @@ export default function Skills() {
           </h2>
           <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full shadow-lg"></div>
           <p className="mt-8 text-gray-800 dark:text-gray-100 font-bold max-w-2xl mx-auto text-lg drop-shadow-sm leading-relaxed translate-y-0 opacity-90 hover:opacity-100 transition-opacity">
-            A comprehensive toolkit for building modern,{' '}
-            <span className="text-blue-700 dark:text-blue-400 border-b-2 border-blue-500/30">intelligent</span> applications
+            Specialized in AI/ML & Generative AI with a{' '}
+            <span className="text-blue-700 dark:text-blue-400 border-b-2 border-blue-500/30">full-stack foundation</span>
           </p>
         </div>
 
@@ -146,17 +145,18 @@ export default function Skills() {
 
         <div className="mt-20 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
           {[
-            { name: 'Gen AI', icon: '🤖' },
-            { name: 'LLMs', icon: '🧠' },
-            { name: 'NLP', icon: '🗣️' },
-            { name: 'IoT', icon: '🔌' },
+            { name: 'LLMs', icon: '🤖' },
+            { name: 'RAG', icon: '📚' },
+            { name: 'Prompt Engineering', icon: '✨' },
             { name: 'Computer Vision', icon: '👁️' },
             { name: 'Deep Learning', icon: '🧠' },
-            { name: 'Data Analytics', icon: '📊' },
-            { name: 'Web Apps', icon: '🌐' },
-            { name: 'APIs', icon: '🔗' },
-            { name: 'Cloud', icon: '☁️' },
-            { name: 'Git', icon: '📦' }
+            { name: 'NLP', icon: '🗣️' },
+            { name: 'OpenAI APIs', icon: '🔑' },
+            { name: 'PyTorch', icon: '⚡' },
+            { name: 'TensorFlow', icon: '🧮' },
+            { name: 'LangChain', icon: '⛓️' },
+            { name: 'FastAPI', icon: '🚀' },
+            { name: 'React', icon: '⚛️' }
           ].map((tech, index) => (
             <TechBadge key={index} tech={tech} index={index} />
           ))}
