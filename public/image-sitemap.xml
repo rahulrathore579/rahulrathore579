@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-
-  <!-- Primary Profile Image -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://rahulrathore579.vercel.app/</loc>
     <image:image>
       <image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
-      <image:title>Rahul Rathore - AI/ML &amp; Generative AI Full-Stack Developer</image:title>
-      <image:caption>Rahul Rathore, AI/ML &amp; Generative AI Full-Stack Developer and Founder of Fluenzy AI, based in Agra, Uttar Pradesh, India</image:caption>
+      <image:title>Rahul Rathore - AI Developer - Generative AI Full-Stack Developer</image:title>
+      <image:caption>Rahul Rathore, AI/ML and Generative AI Full-Stack Developer and Founder of Fluenzy AI, based in Agra, Uttar Pradesh, India</image:caption>
     </image:image>
   </url>
 
@@ -27,7 +24,7 @@
     <loc>https://rahulrathore579.vercel.app/projects#fluenzy</loc>
     <image:image>
       <image:loc>https://rahulrathore579.vercel.app/projects/fluenzyai.png</image:loc>
-      <image:title>Fluenzy AI - LLM-powered English Learning Platform (AI Nirman 2026 Winner)</image:title>
+      <image:title>Fluenzy AI - LLM-powered English Learning Platform AI Nirman 2026 Winner</image:title>
       <image:caption>Fluenzy AI project featuring GPT-4o integration, RAG systems, and AI-powered language learning. Follow Rahul Rathore @rahulrathore579 on Instagram for project updates and technical deep dives</image:caption>
     </image:image>
   </url>
@@ -37,8 +34,8 @@
     <loc>https://rahulrathore579.vercel.app/projects#zapkart</loc>
     <image:image>
       <image:loc>https://rahulrathore579.vercel.app/projects/zapkart.png</image:loc>
-      <image:title>Zapkart Smart Cart - IoT + Computer Vision Shopping Automation</image:title>
-      <image:caption>Zapkart Smart Shopping Cart with 95%+ computer vision accuracy for product recognition and automatic billing. Showcased on Instagram @rahulrathore579</image:caption>
+      <image:title>Zapkart Smart Cart - IoT and Computer Vision Shopping Automation</image:title>
+      <image:caption>Zapkart Smart Shopping Cart with 95% computer vision accuracy for product recognition and automatic billing. Showcased on Instagram @rahulrathore579</image:caption>
     </image:image>
   </url>
 
@@ -47,7 +44,7 @@
     <loc>https://rahulrathore579.vercel.app/projects#classroom</loc>
     <image:image>
       <image:loc>https://rahulrathore579.vercel.app/projects/image1copy.png</image:loc>
-      <image:title>AI Smart Classroom - Facial Recognition &amp; AI-Driven Attendance (98% Accuracy)</image:title>
+      <image:title>AI Smart Classroom - Facial Recognition and AI-Driven Attendance 98% Accuracy</image:title>
       <image:caption>AI Smart Classroom with 98% accurate facial recognition-based attendance, WebRTC streaming, and real-time student engagement metrics. See more on Instagram @rahulrathore579</image:caption>
     </image:image>
   </url>
@@ -68,7 +65,7 @@
     <image:image>
       <image:loc>https://rahulrathore579.vercel.app/projects/imagecopy2.png</image:loc>
       <image:title>Product Recognition CNN - Deep Learning Classification (96% Accuracy)</image:title>
-      <image:caption>Deep learning computer vision model achieving 96% accuracy on 50K+ product images using transfer learning and CNN. Deployed for retail automation. Documented on Instagram @rahulrathore579</image:caption>
+      <image:caption>Deep learning computer vision model achieving 96% accuracy on 50K product images using transfer learning and CNN. Deployed for retail automation. Documented on Instagram @rahulrathore579</image:caption>
     </image:image>
   </url>
 
@@ -78,7 +75,7 @@
     <image:image>
       <image:loc>https://rahulrathore579.vercel.app/projects/imagecopy3.png</image:loc>
       <image:title>Data Analytics Dashboard - Business Intelligence with Power BI</image:title>
-      <image:caption>Custom Python ETL pipeline processing 1M+ data points with interactive Power BI visualizations and DAX formulas. Business analytics and data-driven insights. See dashboards on Instagram @rahulrathore579</image:caption>
+      <image:caption>Custom Python ETL pipeline processing 1M data points with interactive Power BI visualizations. Business analytics and data-driven insights. See dashboards on Instagram @rahulrathore579</image:caption>
     </image:image>
   </url>
 
@@ -87,8 +84,8 @@
     <loc>https://rahulrathore579.vercel.app/skills</loc>
     <image:image>
       <image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
-      <image:title>Rahul Rathore - AI/ML &amp; Generative AI Skills</image:title>
-      <image:caption>AI/ML &amp; Generative AI Full-Stack Developer with expertise in LLMs, RAG systems, Deep Learning, Computer Vision, and Full-Stack Development. India-based. Instagram: @rahulrathore579</image:caption>
+      <image:title>Rahul Rathore - AI/ML and Generative AI Skills</image:title>
+      <image:caption>AI/ML and Generative AI Full-Stack Developer with expertise in LLMs, RAG systems, Deep Learning, Computer Vision, and Full-Stack Development. India-based. Instagram @rahulrathore579</image:caption>
     </image:image>
   </url>
 
@@ -117,7 +114,7 @@
     <loc>https://rahulrathore579.vercel.app/certificates</loc>
     <image:image>
       <image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
-      <image:title>Rahul Rathore - Certifications &amp; Awards</image:title>
+      <image:title>Rahul Rathore - Certifications and Awards</image:title>
       <image:caption>AI Nirman 2026 Winner | Python Certification | Advanced Power BI. Rahul Rathore's achievements and certifications in AI/ML. See detailed updates on Instagram @rahulrathore579</image:caption>
     </image:image>
   </url>
@@ -137,7 +134,7 @@
     <loc>https://rahulrathore579.vercel.app/press</loc>
     <image:image>
       <image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
-      <image:title>Rahul Rathore - Press &amp; Media</image:title>
+      <image:title>Rahul Rathore - Press and Media</image:title>
       <image:caption>Press coverage and media mentions of Rahul Rathore, AI/ML Developer and Founder of Fluenzy AI. Follow Instagram @rahulrathore579 for latest news and updates</image:caption>
     </image:image>
   </url>
