@@ -32,22 +32,22 @@ export default function About() {
     {
       icon: Brain,
       title: 'Generative AI & LLMs',
-      description: 'RAG systems, prompt engineering, fine-tuning, OpenAI APIs & LangChain'
+      description: 'LLMs, Prompt Engineering, RAG systems, AI agents, fine-tuning'
     },
     {
       icon: Code2,
-      title: 'Fluenzy AI',
-      description: 'LLM-powered language learning platform — AI Nirman 2026 winner'
+      title: 'Deep Learning & CV',
+      description: 'Computer Vision, NLP, Transformers, Deep Neural Networks'
     },
     {
       icon: Globe,
-      title: 'Full-Stack AI',
-      description: 'Production AI systems: React, FastAPI, PyTorch, real-time inference'
+      title: 'Full-Stack AI Dev',
+      description: 'React/Next.js, FastAPI/Flask, TypeScript, Production deployment'
     },
     {
       icon: Database,
-      title: 'Deep Learning & CV',
-      description: 'Computer vision, NLP, TensorFlow, PyTorch, model optimization'
+      title: 'AI Tools & APIs',
+      description: 'OpenAI, LangChain, Hugging Face, Claude API, Vector DBs'
     }
   ];
 
@@ -78,13 +78,17 @@ export default function About() {
             }`}
           >
             <p className="text-lg text-gray-800 dark:text-gray-100 font-medium leading-relaxed drop-shadow-sm">
-              I'm an <strong>AI/ML & Generative AI Developer</strong> and <strong>LLM Engineer</strong>, Co-Founder of <strong>Fluenzy AI</strong> — an intelligent platform leveraging LLMs and real-time feedback for communication mastery. I specialize in building production-grade AI systems using deep learning, NLP, computer vision, and advanced RAG architectures.
+              I'm an <strong>AI/ML & Generative AI Full-Stack Developer</strong> and Co-Founder of <strong>Fluenzy AI</strong> — an AI-powered platform
+              redefining language learning and professional communication through LLMs, RAG systems, and advanced AI agents.
+              I specialize in building production-grade AI solutions using Generative AI, Deep Learning, Computer Vision, and NLP.
             </p>
             <p className="text-lg text-gray-800 dark:text-gray-100 font-medium leading-relaxed drop-shadow-sm">
-              My stack: <strong>Python, TensorFlow, PyTorch, OpenAI APIs, LangChain, FastAPI, React</strong> — applied to real-world AI solutions including intelligent search systems, voice-enabled conversational AI, and computer vision applications. I've designed Fluenzy AI's LLM-powered feedback engine and built Zapkart's computer vision product recognition system deployed in production.
+              My expertise spans LangChain, OpenAI APIs, Anthropic Claude, Python, TensorFlow, PyTorch, FastAPI, Next.js, and TypeScript — applied to
+              production-grade AI systems including LLM applications, RAG pipelines, AI agents, and computer vision solutions deployed to real users.
             </p>
             <p className="text-lg text-gray-800 dark:text-gray-100 font-medium leading-relaxed drop-shadow-sm">
-              As a CS student at GLA University (AI, ML & IoT specialization), I'm passionate about shipping AI-first products that create measurable impact—not just proofs-of-concept. Winner of <strong>AI Nirman 2026</strong> competition with Fluenzy AI.
+              As a CS student at GLA University (AI, ML & IoT specialization) based in Agra, India, I'm passionate about building
+              production-ready AI solutions that create measurable impact. Winner of AI Nirman 2026 for innovation in Generative AI.
             </p>
 
             <div className="pt-4">

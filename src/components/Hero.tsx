@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Download, MessageCircle, Twitter, Briefcase, Instagram } from 'lucide-react';
+import { Github, Linkedin, Mail, Download, MessageCircle, Twitter, Briefcase } from 'lucide-react';
 import profileImage from '../assets/rahul-rathore.png';
 import heroBgImage from '../assets/image7copy.png';
 
@@ -13,8 +13,8 @@ export default function Hero() {
     'AI/ML & Generative AI Developer',
     'LLM Engineer & Prompt Architect',
     'Full-Stack AI Solutions Builder',
-    'Co-Founder of Fluenzy AI',
-    'Computer Vision & NLP Specialist'
+    'Computer Vision & NLP Specialist',
+    'Co-Founder of Fluenzy AI'
   ];
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export default function Hero() {
           </div>
 
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl">
-            <span className="font-semibold text-blue-600 dark:text-blue-400">AI/ML & Generative AI Full-Stack Developer</span> specializing in LLMs, RAG systems, and production-grade AI solutions. Co-Founder of <span className="font-semibold">Fluenzy AI</span> — building intelligent systems that drive measurable real-world impact.
+            <span className="font-semibold text-blue-600 dark:text-blue-400">AI & ML Developer</span> & Co-Founder of Fluenzy AI — building intelligent systems, deep learning models, and AI-powered products that solve real-world problems.
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -127,15 +127,6 @@ export default function Hero() {
               <Linkedin className="w-6 h-6" />
             </a>
             <a
-              href="https://instagram.com/rahulrathore579"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-pink-100 dark:hover:bg-pink-900/30 text-gray-700 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400 transition-all duration-300 hover:scale-110"
-              aria-label="Instagram"
-            >
-              <Instagram className="w-6 h-6" />
-            </a>
-            <a
               href="mailto:rahulrathore39769@gmail.com"
               className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110"
               aria-label="Email"
@@ -170,10 +161,9 @@ export default function Hero() {
               <div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center">
                 <img
                   src={profileImage}
-                  alt="Rahul Rathore - AI/ML & Generative AI Full-Stack Developer, LLM Engineer, Founder of Fluenzy AI, based in Agra India"
-                  title="Rahul Rathore - AI Developer, Machine Learning Engineer, Generative AI Specialist from Agra, Uttar Pradesh"
+                  alt="Rahul Rathore - AI Developer, ML Developer & Founder of Fluenzy AI"
+                  title="Rahul Rathore Profile"
                   className="w-full h-full object-cover"
-                  loading="lazy"
                 />
               </div>
             </div>

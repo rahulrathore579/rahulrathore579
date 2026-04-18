@@ -218,8 +218,8 @@ export default function Projects() {
   const projects = [
     {
       title: 'FluenzyAI',
-      description: 'LLM-powered English learning platform with 10K+ users. Integrates GPT-4o for real-time feedback, Whisper for speech recognition, and custom RAG for contextual learning. AI Nirman 2026 winner.',
-      tech: ['Next.js', 'GPT-4o', 'RAG', 'Whisper API', 'PostgreSQL', 'LangChain'],
+      description: 'An AI-powered English learning platform improving communication skills and placement readiness through personalized AI tutoring and real-time feedback.',
+      tech: ['Next.js', 'TypeScript', 'TailwindCSS', 'OpenAI', 'PostgreSQL', 'Cloud'],
       gradient: 'from-purple-600/50 to-indigo-600/50',
       github: 'https://github.com/rahulrathore579',
       demo: 'https://fluenzyai.app/',
@@ -228,8 +228,8 @@ export default function Projects() {
     },
     {
       title: 'AI Smart Classroom',
-      description: 'Real-time virtual classroom with AI-powered attendance using facial recognition. WebRTC for live streaming, OpenCV for face detection, achieving 98%+ accuracy on attendance tracking.',
-      tech: ['React', 'WebRTC', 'OpenCV', 'Face Recognition', 'FastAPI', 'AI/ML'],
+      description: 'A comprehensive virtual classroom with live screen sharing, AI-driven attendance tracking, and interactive learning tools for teachers and students.',
+      tech: ['React', 'WebRTC', 'Flask', 'OpenCV', 'AI/ML', 'IoT'],
       gradient: 'from-blue-600/50 to-indigo-600/50',
       github: 'https://github.com/rahulrathore579',
       demo: 'https://smart-classroom-demo.vercel.app/',
@@ -238,8 +238,8 @@ export default function Projects() {
     },
     {
       title: 'Connect.Too',
-      description: 'Local service marketplace with secure authentication, real-time messaging, and Razorpay integration. Built with Flask backend and React frontend serving 500+ service providers.',
-      tech: ['Flask', 'React', 'PostgreSQL', 'Razorpay API', 'WebSocket', 'Cloud'],
+      description: 'A local service provider platform with secure authentication, real-time messaging, and integrated Razorpay payment processing.',
+      tech: ['Flask', 'SQLite', 'Razorpay API', 'Python', 'JavaScript', 'cloud'],
       gradient: 'from-blue-500/50 to-cyan-500/50',
       github: 'https://github.com/rahulrathore579',
       demo: 'https://connect-too-demo.vercel.app/',
@@ -247,9 +247,9 @@ export default function Projects() {
       projectPictures: ['https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1974&auto=format&fit=crop']
     },
     {
-      title: 'Zapkart Smart Shopping Cart',
-      description: 'IoT+AI system using OpenCV for product recognition, weight sensors for auto-billing. Deployed in retail with 95%+ accuracy in product identification and 40% faster checkout times.',
-      tech: ['IoT', 'OpenCV', 'Deep Learning', 'Computer Vision', 'Arduino', 'Python', 'React'],
+      title: 'Smart Shopping Cart',
+      description: 'IoT-enabled cart system using OpenCV for product recognition, weight sensors for automatic billing, and real-time inventory management.',
+      tech: ['IoT', 'OpenCV', 'Python', 'Arduino', 'Computer Vision', 'AI/ML', 'Barcode Scan', 'React'],
       gradient: 'from-green-500/50 to-teal-500/50',
       github: 'https://github.com/rahulrathore579',
       demo: 'https://zapkart-demo.onrender.com/',
@@ -257,9 +257,9 @@ export default function Projects() {
       projectPictures: [zapkartImg]
     },
     {
-      title: 'Healthcare IoT Monitor',
-      description: 'Multi-sensor IoT device for real-time patient vitals. AI-powered anomaly detection using LSTMs with 94% sensitivity. Real-time alerts reduce response time by 60% for medical staff.',
-      tech: ['IoT', 'LSTM', 'TensorFlow', 'Sensor Integration', 'Python', 'Real-time Analytics'],
+      title: 'Healthcare Monitor',
+      description: 'IoT-based patient monitoring with multiple sensors for vital signs, AI-powered anomaly detection, and real-time alert systems for medical staff.',
+      tech: ['IoT', 'AI/ML', 'Sensors', 'Python', 'Flask'],
       gradient: 'from-red-500/50 to-orange-500/50',
       github: 'https://github.com/rahulrathore579',
       demo: '#/',
@@ -267,9 +267,9 @@ export default function Projects() {
       projectPictures: [healthcareImg]
     },
     {
-      title: 'Product Recognition CNN',
-      description: 'Deep learning model achieving 96% accuracy on product classification. Custom CNN with transfer learning. Processed 50K+ product images for retail automation and inventory management.',
-      tech: ['Deep Learning', 'CNN', 'TensorFlow', 'Computer Vision', 'Transfer Learning', 'Python'],
+      title: 'Product Recognition',
+      description: 'Deep learning computer vision system for accurate product identification using CNNs and advanced image processing techniques.',
+      tech: ['Deep Learning', 'Computer Vision', 'TensorFlow', 'Python', 'OpenCV'],
       gradient: 'from-indigo-500/50 to-blue-500/50',
       github: 'https://github.com/rahulrathore579',
       demo: 'https://product-recognition-demo.vercel.app/',
@@ -278,8 +278,8 @@ export default function Projects() {
     },
     {
       title: 'Data Analytics Dashboard',
-      description: 'Interactive BI dashboard analyzing 1M+ data points. Custom Python ETL pipeline with Power BI visualizations. Delivers actionable insights reducing analysis time from hours to seconds.',
-      tech: ['Power BI', 'Python', 'SQL', 'ETL', 'Data Visualization', 'DAX'],
+      description: 'Interactive BI dashboard with Power BI and Python for comprehensive data visualization, trend analysis, and actionable business insights.',
+      tech: ['Power BI', 'Python', 'SQL', 'Data Analysis', 'DAX'],
       gradient: 'from-yellow-500/50 to-orange-500/50',
       github: 'https://github.com/rahulrathore579',
       demo: 'https://data-dashboard-demo.vercel.app/',

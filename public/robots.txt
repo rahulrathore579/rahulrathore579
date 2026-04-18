@@ -1,8 +1,10 @@
 User-agent: *
 Allow: /
+Allow: /public/
 Disallow: /dashboard/
 Disallow: /login
 
+# GPT Bot & LLM Crawlers
 User-agent: GPTBot
 Allow: /
 
@@ -15,6 +17,15 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: CCBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
 # Pinterest & Social Media Crawlers
 User-agent: Pinterestbot
 Allow: /
@@ -22,17 +33,41 @@ Allow: /
 User-agent: ia_archiver
 Allow: /
 
-# Image search optimization
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# Image search optimization - HIGH PRIORITY
 User-agent: Googlebot-Image
 Allow: /
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.gif
+Allow: *.webp
 
 User-agent: Bingbot
 Allow: /
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.gif
 
-# Sitemaps
+User-agent: Bingbot-Image
+Allow: /
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.gif
+
+# Crawl-delay to prevent overloading
+Crawl-delay: 1
+
+# Image Sitemaps
 Sitemap: https://rahulrathore579.vercel.app/sitemap.xml
 Sitemap: https://rahulrathore579.vercel.app/image-sitemap.xml
-
-# Crawl delay to prevent overloading
-Crawl-delay: 1
+Sitemap: https://rahulrathore579.vercel.app/public/sitemap.xml
+Sitemap: https://rahulrathore579.vercel.app/public/image-sitemap.xml
 
