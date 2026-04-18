@@ -1,1 +1,0 @@
-If your Flask backend is already deployed somewhere (e.g. Render), add VITE_API_URL=https://your-backend.onrender.com/api under Project → Settings → Environment Variables before deploying.
