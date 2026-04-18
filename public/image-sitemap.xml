@@ -20,19 +20,25 @@
 <image:loc>https://rahulrathore579.vercel.app/projects/fluenzyai.png</image:loc>
 <image:title>Fluenzy AI Platform</image:title>
 </image:image>
-</url>
-<url>
-<loc>https://rahulrathore579.vercel.app/projects</loc>
 <image:image>
 <image:loc>https://rahulrathore579.vercel.app/projects/zapkart.png</image:loc>
 <image:title>Zapkart Smart Cart</image:title>
 </image:image>
-</url>
-<url>
-<loc>https://rahulrathore579.vercel.app/projects</loc>
 <image:image>
 <image:loc>https://rahulrathore579.vercel.app/projects/image1copy.png</image:loc>
 <image:title>AI Smart Classroom</image:title>
+</image:image>
+<image:image>
+<image:loc>https://rahulrathore579.vercel.app/projects/image3copy.png</image:loc>
+<image:title>Healthcare IoT Monitor</image:title>
+</image:image>
+<image:image>
+<image:loc>https://rahulrathore579.vercel.app/projects/imagecopy2.png</image:loc>
+<image:title>Product Recognition CNN</image:title>
+</image:image>
+<image:image>
+<image:loc>https://rahulrathore579.vercel.app/projects/imagecopy3.png</image:loc>
+<image:title>Data Analytics Dashboard</image:title>
 </image:image>
 </url>
 <url>
@@ -49,96 +55,18 @@
 <image:title>Rahul Rathore Contact</image:title>
 </image:image>
 </url>
-</urlset>
-
-  <!-- Projects Page - Healthcare Monitor -->
-  <url>
-    <loc>https://rahulrathore579.vercel.app/projects#healthcare</loc>
-    <image:image>
-      <image:loc>https://rahulrathore579.vercel.app/projects/image3copy.png</image:loc>
-      <image:title>Healthcare IoT Monitor - LSTM-Based Anomaly Detection (94% Sensitivity)</image:title>
-      <image:caption>IoT-based healthcare monitoring system with LSTM-powered anomaly detection achieving 94% sensitivity. Multi-sensor patient vital tracking with 60% faster medical response times. Follow @rahulrathore579 for technical posts</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Projects Page - Product Recognition -->
-  <url>
-    <loc>https://rahulrathore579.vercel.app/projects#product-recognition</loc>
-    <image:image>
-      <image:loc>https://rahulrathore579.vercel.app/projects/imagecopy2.png</image:loc>
-      <image:title>Product Recognition CNN - Deep Learning Classification (96% Accuracy)</image:title>
-      <image:caption>Deep learning computer vision model achieving 96% accuracy on 50K product images using transfer learning and CNN. Deployed for retail automation. Documented on Instagram @rahulrathore579</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Projects Page - Data Analytics Dashboard -->
-  <url>
-    <loc>https://rahulrathore579.vercel.app/projects#data-dashboard</loc>
-    <image:image>
-      <image:loc>https://rahulrathore579.vercel.app/projects/imagecopy3.png</image:loc>
-      <image:title>Data Analytics Dashboard - Business Intelligence with Power BI</image:title>
-      <image:caption>Custom Python ETL pipeline processing 1M data points with interactive Power BI visualizations. Business analytics and data-driven insights. See dashboards on Instagram @rahulrathore579</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Skills Page -->
-  <url>
-    <loc>https://rahulrathore579.vercel.app/skills</loc>
-    <image:image>
-      <image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
-      <image:title>Rahul Rathore - AI/ML and Generative AI Skills</image:title>
-      <image:caption>AI/ML and Generative AI Full-Stack Developer with expertise in LLMs, RAG systems, Deep Learning, Computer Vision, and Full-Stack Development. India-based. Instagram @rahulrathore579</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Contact Page -->
-  <url>
-    <loc>https://rahulrathore579.vercel.app/contact</loc>
-    <image:image>
-      <image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
-      <image:title>Rahul Rathore - Contact</image:title>
-      <image:caption>Contact Rahul Rathore, AI/ML Developer from Agra, India. Email: rahulrathore39769@gmail.com. Follow on Instagram @rahulrathore579 for daily AI insights and project updates</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Experience Page -->
-  <url>
-    <loc>https://rahulrathore579.vercel.app/experience</loc>
-    <image:image>
-      <image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
-      <image:title>Rahul Rathore - Professional Experience</image:title>
-      <image:caption>Rahul Rathore's professional journey as AI/ML Developer, LLM Engineer, and Founder of Fluenzy AI. Follow @rahulrathore579 on Instagram for career updates and industry insights</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Certificates Page -->
-  <url>
-    <loc>https://rahulrathore579.vercel.app/certificates</loc>
-    <image:image>
-      <image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
-      <image:title>Rahul Rathore - Certifications and Awards</image:title>
-      <image:caption>AI Nirman 2026 Winner | Python Certification | Advanced Power BI. Rahul Rathore's achievements and certifications in AI/ML. See detailed updates on Instagram @rahulrathore579</image:caption>
-    </image:image>
-  </url>
-
-  <!-- FAQ Page -->
-  <url>
-    <loc>https://rahulrathore579.vercel.app/faq</loc>
-    <image:image>
-      <image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
-      <image:title>Rahul Rathore - FAQ</image:title>
-      <image:caption>Frequently Asked Questions about Rahul Rathore - AI Developer from Agra, India. Follow @rahulrathore579 on Instagram for more information and daily developer content</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Press/About Page -->
-  <url>
-    <loc>https://rahulrathore579.vercel.app/press</loc>
-    <image:image>
-      <image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
-      <image:title>Rahul Rathore - Press and Media</image:title>
-      <image:caption>Press coverage and media mentions of Rahul Rathore, AI/ML Developer and Founder of Fluenzy AI. Follow Instagram @rahulrathore579 for latest news and updates</image:caption>
-    </image:image>
-  </url>
-
+<url>
+<loc>https://rahulrathore579.vercel.app/faq</loc>
+<image:image>
+<image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
+<image:title>Rahul Rathore FAQ</image:title>
+</image:image>
+</url>
+<url>
+<loc>https://rahulrathore579.vercel.app/press</loc>
+<image:image>
+<image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
+<image:title>Rahul Rathore Press</image:title>
+</image:image>
+</url>
 </urlset>
