@@ -8,7 +8,7 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://rahulrathore579.vercel.app/rahul-rathore-developer.jpeg</image:loc>
-      <image:title>Rahul Rathore - AI/ML & Generative AI Developer</image:title>
+      <image:title>Rahul Rathore AI/ML Generative AI Developer</image:title>
       <image:caption>Profile photo of Rahul Rathore, AI/ML and Generative AI Full-Stack Developer from Agra, India</image:caption>
     </image:image>
   </url>
@@ -35,7 +35,7 @@
     </image:image>
     <image:image>
       <image:loc>https://rahulrathore579.vercel.app/projects/zapkart.png</image:loc>
-      <image:title>Zapkart Smart Cart - IoT + Computer Vision</image:title>
+      <image:title>Zapkart Smart Cart IoT Computer Vision</image:title>
       <image:caption>Smart shopping cart using OpenCV for product recognition and automatic billing</image:caption>
     </image:image>
   </url>
